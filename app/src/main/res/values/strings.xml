@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Toothache</string>
+    <string name="choose_using_approach">Wybierz sposób użytkowania</string>
+    <string name="use_as">Używaj jako:</string>
+    <string name="patient">Pacjent</string>
+    <string name="dentist">Dentysta</string>
 </resources>

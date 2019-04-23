@@ -3,4 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="dark_gray22">#222</color>
+    <color name="lighter_blue_medical84">#84c3ff</color>
+    <color name="blue_medical48">#48a4ff</color>
+    <color name="lighter_green_medical5e">#5edf9c</color>
+    <color name="green_medical52">#52c388</color>
 </resources>
