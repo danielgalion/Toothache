@@ -15,11 +15,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/choose_using_approach"
         android:padding="@dimen/padding"
+        android:text="@string/choose_using_approach"
+        android:textColor="@color/dark_gray22"
         android:textSize="50sp"
         android:textStyle="bold"
-        android:textColor="@color/dark_gray22"
         />
 
     <Space
@@ -32,25 +32,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:textColor="@color/dark_gray22"
         android:padding="@dimen/padding"
         android:text="@string/use_as"
+        android:textColor="@color/dark_gray22"
         android:textSize="32sp"
         />
 
     <Button
+        android:id="@+id/main_patient_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_margin="@dimen/padding"
+        android:background="@drawable/selector_blue_medical"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/patient"
+        android:textSize="24sp"
         />
-        <!--android:background="@color/blue_medical_selector"-->
 
     <Button
+        android:id="@+id/main_dentist_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_margin="@dimen/padding"
+        android:background="@drawable/selector_green_medical"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/dentist"
+        android:textSize="24sp"
         />
 
     <Space

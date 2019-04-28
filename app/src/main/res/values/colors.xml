@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <!--<color name="colorPrimary">#008577</color>-->
+    <color name="colorPrimary">@color/darker_green_medical30</color>
+    <!--<color name="colorPrimaryDark">#00574B</color>-->
+    <color name="colorPrimaryDark">@color/dark_green_medical18</color>
     <color name="colorAccent">#D81B60</color>
     <color name="dark_gray22">#222</color>
     <color name="lighter_blue_medical84">#84c3ff</color>
     <color name="blue_medical48">#48a4ff</color>
     <color name="lighter_green_medical5e">#5edf9c</color>
     <color name="green_medical52">#52c388</color>
+    <color name="darker_green_medical30">#308b5c</color>
+    <color name="dark_green_medical18">#18492f</color>
 </resources>

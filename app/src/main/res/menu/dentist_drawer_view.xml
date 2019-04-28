@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/group_your_offices">
+        <item
+            android:id="@+id/list"
+            android:icon="@drawable/ic_view_list_black_24dp"
+            android:title="@string/list"
+            />
+        <item
+            android:id="@+id/edit"
+            android:icon="@drawable/ic_edit_black_24dp"
+            android:title="@string/edit"
+            />
+    </group>
+    <group android:id="@+id/group_settings">
+        <item
+            android:id="@+id/patient_dentist"
+            android:icon="@drawable/ic_group_black_24dp"
+            android:title="@string/patient_dentist"
+            />
+    </group>
+</menu>

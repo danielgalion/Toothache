@@ -14,5 +14,9 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".activities.DentistDashboardActivity"/>
+        <activity android:name=".activities.PatientDashboardActivity"/>
+        <activity android:name=".activities.DentistSignInActivity"/>
+        <activity android:name=".activities.DentistSignUpActivity"/>
     </application>
 </manifest>

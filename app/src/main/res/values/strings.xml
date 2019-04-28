@@ -4,4 +4,13 @@
     <string name="use_as">Używaj jako:</string>
     <string name="patient">Pacjent</string>
     <string name="dentist">Dentysta</string>
+    <string name="list">Lista</string>
+    <string name="edit">Edytuj</string>
+    <string name="patient_dentist">Pacjent / dentysta</string>
+    <string name="email">Adres e-mail</string>
+    <string name="password">Hasło</string>
+    <string name="sign_in_upper_case">ZALOGUJ SIĘ</string>
+    <string name="dont_u_have_an_acc_up_case">NIE MASZ KONTA?</string>
+    <string name="sign_up_up_case">ZAREJESTRUJ SIĘ</string>
+    <string name="repeat_password">Powtórz hasło</string>
 </resources>
