@@ -17,8 +17,12 @@ class DentistSignInActivity : AppCompatActivity() {
     }
 
     private fun setupButtons() {
-        sign_in_login_button_id.setOnClickListener {
+        dentist_sign_in_login_button_id.setOnClickListener {
             startActivity(Intent(this, DentistDashboardActivity::class.java))
+        }
+
+        dentist_sign_in_sign_up_button_id.setOnClickListener {
+            startActivity(Intent(this, DentistSignUpActivity::class.java))
         }
     }
 }

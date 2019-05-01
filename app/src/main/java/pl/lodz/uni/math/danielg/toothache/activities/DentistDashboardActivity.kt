@@ -1,7 +1,9 @@
 package pl.lodz.uni.math.danielg.toothache.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -11,6 +13,7 @@ import kotlinx.android.synthetic.main.navigation_view.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistEditFragment
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistListFragment
+import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
 
 class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     companion object {
@@ -22,8 +25,10 @@ class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigatio
         setContentView(R.layout.activity_dentist_dashboard)
 
         initNavView()
-        setTopBar()
+        TopBarHelper.setUp(this, "Ekran dentysty", true, R.drawable.ic_menu_white_24dp)
     }
+
+    override fun onBackPressed() {}
 
     // TODO: Add office item. Or icon on the right hand side of a TopBar
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -39,11 +44,18 @@ class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigatio
                 supportActionBar!!.title = "Edytuj"
             }
             R.id.patient_dentist -> {
-                onBackPressed()
+                // UsingTypeActivity is in launchMode "singleTask". So there won't be opened multiple windows of this activity.
+                startActivity(Intent(this, UsingTypeActivity::class.java))
             }
         }
 
         dentist_dashboard_drawer_lay_id.closeDrawer(GravityCompat.START)
+
+        return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.dentist_dashboard, menu)
 
         return true
     }
@@ -58,6 +70,10 @@ class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigatio
                 }
                 true
             }
+            R.id.dentist_dashboard_add_office_id -> {
+                startActivity(Intent(this, AddDentistOfficeActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -65,11 +81,5 @@ class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigatio
     private fun initNavView() {
         navigation_view_id.inflateMenu(R.menu.dentist_drawer_view)
         navigation_view_id.setNavigationItemSelectedListener(this)
-    }
-
-    private fun setTopBar() {
-        supportActionBar!!.setHomeAsUpIndicator(R.drawable.ic_menu_white_24dp)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.title = "Ekran dentysty"
     }
 }

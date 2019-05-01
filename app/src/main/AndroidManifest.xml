@@ -1,22 +1,48 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="pl.lodz.uni.math.danielg.toothache">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="pl.lodz.uni.math.danielg.toothache"
+    >
 
-    <application android:allowBackup="true"
-                 android:label="@string/app_name"
-                 android:icon="@mipmap/ic_launcher"
-                 android:roundIcon="@mipmap/ic_launcher_round"
-                 android:supportsRtl="true"
-                 android:theme="@style/AppTheme" tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".activities.MainActivity">
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning"
+        >
+        <activity
+            android:name=".activities.UsingTypeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
         </activity>
-        <activity android:name=".activities.DentistDashboardActivity"/>
-        <activity android:name=".activities.PatientDashboardActivity"/>
-        <activity android:name=".activities.DentistSignInActivity"/>
-        <activity android:name=".activities.DentistSignUpActivity"/>
+        <activity
+            android:name=".activities.DentistDashboardActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activities.PatientDashboardActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activities.DentistSignInActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activities.DentistSignUpActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activities.AddDentistOfficeActivity"
+            android:screenOrientation="portrait"
+            />
     </application>
 </manifest>

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import pl.lodz.uni.math.danielg.toothache.R
 
-class MainActivity : AppCompatActivity() {
+class UsingTypeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
         title = "Boliząb Polska"
     }
 
-    // TODO: Disable onBackPressed in child activities. Make a button in a drawer.
+    override fun onBackPressed() {}
+
     private fun setupButtons() {
         main_patient_button.setOnClickListener {
             startActivity(Intent(this, PatientDashboardActivity::class.java))

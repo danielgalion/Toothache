@@ -6,14 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
 
-
-// TODO: Take layout from SignUp from TeamProject
-class DentistSignUpActivity : AppCompatActivity() {
+class AddDentistOfficeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_dentist_sign_up)
+        setContentView(R.layout.activity_add_dentist_office)
 
-        TopBarHelper.setUp(this, "Rejestracja", true)
+        TopBarHelper.setUp(this, "Nowy gabinet", true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -22,7 +20,7 @@ class DentistSignUpActivity : AppCompatActivity() {
                 onBackPressed()
                 true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
