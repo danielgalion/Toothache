@@ -14,4 +14,5 @@
     <string name="sign_up_up_case">ZAREJESTRUJ SIĘ</string>
     <string name="repeat_password">Powtórz hasło</string>
     <string name="add_your_office_up_case">DODAJ SWÓJ GABINET</string>
+    <string name="sign_out">Wyloguj się</string>
 </resources>

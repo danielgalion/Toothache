@@ -2,6 +2,7 @@ package pl.lodz.uni.math.danielg.toothache.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -14,6 +15,7 @@ import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistEditFragment
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistListFragment
 import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
+import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeSharedPreferencesManager
 
 class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     companion object {
@@ -28,24 +30,37 @@ class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigatio
         TopBarHelper.setUp(this, "Ekran dentysty", true, R.drawable.ic_menu_white_24dp)
     }
 
-    override fun onBackPressed() {}
+    override fun onBackPressed() {
+        finish()
+        Handler().postDelayed({ System.exit(0) }, 500)
+    }
 
     // TODO: Add office item. Or icon on the right hand side of a TopBar
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.list -> {
                 Log.d(TAG, "List item is clicked. @onNavigationItemSelected(..)")
-                supportFragmentManager.beginTransaction().replace(R.id.dentist_dashboard_fragment_lin_lay, DentistListFragment()).commit()
+                supportFragmentManager.beginTransaction()
+                        .replace(R.id.dentist_dashboard_fragment_lin_lay, DentistListFragment()).commit()
                 supportActionBar!!.title = "Lista"
             }
             R.id.edit -> {
                 Log.d(TAG, "Edit item is clicked. @onNavigationItemSelected(..)")
-                supportFragmentManager.beginTransaction().replace(R.id.dentist_dashboard_fragment_lin_lay, DentistEditFragment()).commit()
+                supportFragmentManager.beginTransaction()
+                        .replace(R.id.dentist_dashboard_fragment_lin_lay, DentistEditFragment()).commit()
                 supportActionBar!!.title = "Edytuj"
             }
             R.id.patient_dentist -> {
+                val intent = Intent(this, UsingTypeActivity::class.java)
+
                 // UsingTypeActivity is in launchMode "singleTask". So there won't be opened multiple windows of this activity.
-                startActivity(Intent(this, UsingTypeActivity::class.java))
+                UsingTypeSharedPreferencesManager.setUsingType(this, UsingTypeSharedPreferencesManager.USING_TYPE_NONE)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(intent)
+            }
+            R.id.sign_out -> {
+                UsingTypeSharedPreferencesManager.setUsingType(this, UsingTypeSharedPreferencesManager.USING_TYPE_NONE)
+                startActivity(Intent(this, DentistSignInActivity::class.java))
             }
         }
 

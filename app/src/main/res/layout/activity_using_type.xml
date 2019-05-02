@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/using_type_lin_lay_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -39,7 +40,7 @@
         />
 
     <Button
-        android:id="@+id/main_patient_button"
+        android:id="@+id/using_type_patient_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_margin="@dimen/padding"
@@ -50,7 +51,7 @@
         />
 
     <Button
-        android:id="@+id/main_dentist_button"
+        android:id="@+id/using_type_dentist_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
         android:layout_margin="@dimen/padding"
