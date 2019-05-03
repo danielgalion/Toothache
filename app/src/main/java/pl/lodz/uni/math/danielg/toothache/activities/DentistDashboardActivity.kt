@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.navigation_view.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistEditFragment
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistListFragment
+import pl.lodz.uni.math.danielg.toothache.managers.ExitAppHelper
 import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
 import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeSharedPreferencesManager
 
@@ -32,8 +33,7 @@ class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigatio
     }
 
     override fun onBackPressed() {
-        finish()
-        Handler().postDelayed({ System.exit(0) }, 500)
+        ExitAppHelper.exit(this)
     }
 
     // TODO: Add office item. Or icon on the right hand side of a TopBar
@@ -108,8 +108,11 @@ class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigatio
         }
 
         fun onSignOutItemClicked(activity: DentistDashboardActivity) {
+            val intent = Intent(activity, DentistSignInActivity::class.java)
+
             UsingTypeSharedPreferencesManager.setUsingType(activity, UsingTypeSharedPreferencesManager.USING_TYPE_NONE)
-            activity.startActivity(Intent(activity, DentistSignInActivity::class.java))
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            activity.startActivity(intent)
         }
 
         private fun openFragment(activity: DentistDashboardActivity, fragment: Fragment) {

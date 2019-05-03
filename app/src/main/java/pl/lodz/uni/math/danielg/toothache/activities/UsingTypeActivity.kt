@@ -11,13 +11,14 @@ import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeSharedPreferencesMan
 class UsingTypeActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "UsingTypeActivity"
+        const val SHOULD_EXIT = "shouldExit"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (isUserTypeAlreadySet())
-            intentWhenUsingTypeIsAlreadySet()
+        if (shouldExitApp()) finish()
+        else if (isUserTypeAlreadySet()) intentWhenUsingTypeIsAlreadySet()
         else {
             setContentView(R.layout.activity_using_type)
             setupButtons()
@@ -27,7 +28,11 @@ class UsingTypeActivity : AppCompatActivity() {
         // TODO: When a dentist is already logged in intent to his dashboard. (Here or in DentistSignIn)
     }
 
-//    override fun onBackPressed() {}
+    private fun shouldExitApp(): Boolean {
+        if (!intent.hasExtra(SHOULD_EXIT)) return false
+
+        return intent.getBooleanExtra(SHOULD_EXIT, false)
+    }
 
     private fun isUserTypeAlreadySet(): Boolean {
         return UsingTypeSharedPreferencesManager.getUsingType(this) != UsingTypeSharedPreferencesManager.USING_TYPE_NONE

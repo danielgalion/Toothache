@@ -6,7 +6,9 @@ import android.os.Handler
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import pl.lodz.uni.math.danielg.toothache.R
+import pl.lodz.uni.math.danielg.toothache.managers.ExitAppHelper
 import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
+import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeHelper
 import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeSharedPreferencesManager
 
 class PatientDashboardActivity : AppCompatActivity() {
@@ -18,18 +20,13 @@ class PatientDashboardActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        finish()
-        Handler().postDelayed({ System.exit(0) }, 500)
+        ExitAppHelper.exit(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             android.R.id.home -> {
-                val intent = Intent(this, UsingTypeActivity::class.java)
-
-                UsingTypeSharedPreferencesManager.setUsingType(this, UsingTypeSharedPreferencesManager.USING_TYPE_NONE)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                startActivity(intent)
+                UsingTypeHelper.intentToChoiceActivity(this)
                 true
             }
             else -> super.onOptionsItemSelected(item)

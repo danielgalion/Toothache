@@ -36,9 +36,9 @@
         <activity
             android:name=".activities.DentistSignInActivity"
             android:launchMode="singleTask"
-            android:noHistory="true"
             android:screenOrientation="portrait"
             />
+        <!--android:noHistory="true"-->
         <activity
             android:name=".activities.DentistSignUpActivity"
             android:screenOrientation="portrait"

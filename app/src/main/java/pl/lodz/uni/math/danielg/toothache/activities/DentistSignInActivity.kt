@@ -2,9 +2,12 @@ package pl.lodz.uni.math.danielg.toothache.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_dentist_sign_in.*
 import pl.lodz.uni.math.danielg.toothache.R
+import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
+import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeHelper
 import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeSharedPreferencesManager
 
 class DentistSignInActivity : AppCompatActivity() {
@@ -13,16 +16,22 @@ class DentistSignInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dentist_sign_in)
 
         setupButtons()
-
-        title = "Logowanie"
+        TopBarHelper.setUp(this, "Logowanie", true, R.drawable.ic_group_white_24dp)
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, UsingTypeActivity::class.java)
+        UsingTypeHelper.intentToChoiceActivity(this)
+    }
 
-        UsingTypeSharedPreferencesManager.setUsingType(this, UsingTypeSharedPreferencesManager.USING_TYPE_NONE)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            android.R.id.home -> {
+                UsingTypeHelper.intentToChoiceActivity(this)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+
+        }
     }
 
     private fun setupButtons() {
