@@ -5,6 +5,8 @@
     <!--<color name="colorPrimaryDark">#00574B</color>-->
     <color name="colorPrimaryDark">@color/dark_green_medical18</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="light_redf0">#f08080</color>
+    <color name="rede4">#e42c2c</color>
     <color name="dark_gray22">#222</color>
     <color name="lighter_blue_medical84">#84c3ff</color>
     <color name="blue_medical48">#48a4ff</color>

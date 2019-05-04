@@ -15,4 +15,6 @@
     <string name="repeat_password">Powtórz hasło</string>
     <string name="add_your_office_up_case">DODAJ SWÓJ GABINET</string>
     <string name="sign_out">Wyloguj się</string>
+    <string name="availability">Dostępność: </string>
+    <string name="ask_on_the_phone">zapytaj przez telefon</string>
 </resources>

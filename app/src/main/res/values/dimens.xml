@@ -2,5 +2,11 @@
 <resources>
     <dimen name="padding">16dp</dimen>
     <dimen name="padding_small">10dp</dimen>
+    <dimen name="margin_tb_small">8dp</dimen>
     <dimen name="button_height">60dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
+    <dimen name="text_size_office_list_header">16sp</dimen>
+    <dimen name="text_size_office_list_desc_item">12sp</dimen>
+    <dimen name="text_size_office_header">20sp</dimen>
+    <dimen name="text_size_office_desc_item">14sp</dimen>
 </resources>

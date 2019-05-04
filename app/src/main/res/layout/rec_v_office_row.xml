@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <Space
+        android:id="@+id/rec_v_office_top_space_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_tb_small"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/padding"
+        android:layout_marginTop="@dimen/margin_tb_small"
+        android:layout_marginEnd="@dimen/padding"
+        android:layout_marginBottom="@dimen/margin_tb_small"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="@dimen/padding_small"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/rec_v_office_name_txt_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_tb_small"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_office_list_header"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/rec_v_office_dr_names_txt_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_tb_small"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_office_list_desc_item"
+                android:textStyle="bold"
+                />
+
+            <LinearLayout
+                android:id="@+id/rec_v_office_availability_lin_lay_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables"
+                >
+
+                <TextView
+                    android:id="@+id/rec_v_office_availability_txt_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_office_list_desc_item"
+                    />
+                <!--android:text="@string/availability"-->
+
+                <ImageView
+                    android:id="@+id/rec_v_office_availability_img_id"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    tools:ignore="ContentDescription"
+                    />
+                <!--android:src="@drawable/selector_green_medical"-->
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Space
+        android:id="@+id/rec_v_office_bottom_space_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_tb_small"
+        />
+
+</LinearLayout>
