@@ -5,17 +5,19 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_patient_dashboard.*
 import pl.lodz.uni.math.danielg.toothache.R
-import pl.lodz.uni.math.danielg.toothache.managers.ExitAppHelper
-import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
-import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeHelper
-import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeSharedPreferencesManager
+import pl.lodz.uni.math.danielg.toothache.adapters.OfficesAdapter
+import pl.lodz.uni.math.danielg.toothache.data.Data
+import pl.lodz.uni.math.danielg.toothache.managers.*
 
 class PatientDashboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_patient_dashboard)
 
+//        TODO: Later attach real data list
+        RecViewVerticalHelper.attach(this, recycler_v_patient_dashboard_id, OfficesAdapter(this, Data.sampleOfficeList))
         TopBarHelper.setUp(this, "Ekran pacjenta", true, R.drawable.ic_group_white_24dp)
     }
 

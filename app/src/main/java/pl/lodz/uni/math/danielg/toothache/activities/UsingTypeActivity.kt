@@ -2,6 +2,7 @@ package pl.lodz.uni.math.danielg.toothache.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_using_type.*
@@ -14,18 +15,27 @@ class UsingTypeActivity : AppCompatActivity() {
         const val SHOULD_EXIT = "shouldExit"
     }
 
+    var isContentViewSet: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         if (shouldExitApp()) finish()
         else if (isUserTypeAlreadySet()) intentWhenUsingTypeIsAlreadySet()
-        else {
-            setContentView(R.layout.activity_using_type)
-            setupButtons()
-        }
+        else attachContentView()
 
         title = "Boliząb Polska"
         // TODO: When a dentist is already logged in intent to his dashboard. (Here or in DentistSignIn)
+    }
+
+    // When app is showed on the foreground again (e.g. onBackPressed after intenting for a dentist call).
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "Called onRestart()")
+
+        if (isUserTypeAlreadySet()) intentWhenUsingTypeIsAlreadySet()
+        else if (isContentViewSet) using_type_lin_lay_id.visibility = View.VISIBLE
+        else attachContentView()
     }
 
     private fun shouldExitApp(): Boolean {
@@ -44,9 +54,15 @@ class UsingTypeActivity : AppCompatActivity() {
                 startActivity(Intent(this, PatientDashboardActivity::class.java))
             UsingTypeSharedPreferencesManager.USING_TYPE_DENTIST ->
                 startActivity(Intent(this, DentistSignInActivity::class.java))
-            else -> {
+            else                                                 -> {
             }
         }
+    }
+
+    private fun attachContentView() {
+        setContentView(R.layout.activity_using_type)
+        isContentViewSet = true
+        setupButtons()
     }
 
     private fun setupButtons() {
