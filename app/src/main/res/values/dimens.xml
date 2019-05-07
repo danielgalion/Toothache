@@ -9,4 +9,6 @@
     <dimen name="text_size_office_list_desc_item">12sp</dimen>
     <dimen name="text_size_office_header">20sp</dimen>
     <dimen name="text_size_office_desc_item">14sp</dimen>
+    <dimen name="size_big_clickable_icon">40dp</dimen>
+    <dimen name="size_smaller_icon">20dp</dimen>
 </resources>

@@ -15,7 +15,7 @@ class UsingTypeActivity : AppCompatActivity() {
         const val SHOULD_EXIT = "shouldExit"
     }
 
-    var isContentViewSet: Boolean = false
+    private var isContentViewSet: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_dentist_list.*
 import pl.lodz.uni.math.danielg.toothache.R
-import pl.lodz.uni.math.danielg.toothache.adapters.OfficesAdapter
+import pl.lodz.uni.math.danielg.toothache.adapters.OfficesListAdapter
 import pl.lodz.uni.math.danielg.toothache.data.Data
 import pl.lodz.uni.math.danielg.toothache.managers.RecViewVerticalHelper
 
@@ -26,7 +26,7 @@ class DentistListFragment : Fragment() {
         RecViewVerticalHelper.attach(
                 view.context,
                 recycler_v_dentist_list_id,
-                OfficesAdapter(view.context, Data.sampleOfficeList)
+                OfficesListAdapter(view.context, Data.sampleOfficeList)
         )
     }
 }

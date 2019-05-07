@@ -73,8 +73,8 @@
 
                 <ImageView
                     android:id="@+id/rec_v_office_availability_img_id"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="@dimen/size_big_clickable_icon"
+                    android:layout_height="@dimen/size_big_clickable_icon"
                     tools:ignore="ContentDescription"
                     />
                 <!--android:src="@drawable/selector_green_medical"-->

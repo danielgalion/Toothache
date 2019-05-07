@@ -10,16 +10,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rec_v_office_row.view.*
 import pl.lodz.uni.math.danielg.toothache.R
+import pl.lodz.uni.math.danielg.toothache.activities.OfficeActivity
+import pl.lodz.uni.math.danielg.toothache.data.Data
 import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
 import pl.lodz.uni.math.danielg.toothache.managers.ItemClickListener
 import pl.lodz.uni.math.danielg.toothache.managers.toStringWithBrs
+import pl.lodz.uni.math.danielg.toothache.models.Office
 import pl.lodz.uni.math.danielg.toothache.models.OfficeShortened
 
-class OfficesAdapter(private val context: Context, private val offices: ArrayList<OfficeShortened>?) :
+class OfficesListAdapter(private val context: Context, private val offices: ArrayList<OfficeShortened>?) :
         RecyclerView.Adapter<CustomViewHolder>() {
 
     companion object {
-        private const val TAG = "OfficesAdapter"
+        private const val TAG = "OfficesListAdapter"
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -45,15 +48,28 @@ class OfficesAdapter(private val context: Context, private val offices: ArrayLis
     private fun onClick(holder: CustomViewHolder) {
         holder.itemClickListener = object : ItemClickListener {
             override fun onItemClick(view: View?) {
-                val availability = offices?.get(holder.adapterPosition)?.availability
-
-                if (availability == false || availability == null) {
-                    OrderVisitHelper.call(context, offices?.get(holder.adapterPosition)?.mainPhoneNumber)
-                } else {
-//                    TODO: Intent to form for ordering a visit.
+                when (view?.id) {
+                    view?.rec_v_office_availability_img_id?.id -> callOnThePhone(holder)
+                    else                                       -> intentToOffice(Data.sampleFullOffice)
                 }
             }
         }
+    }
+
+    private fun callOnThePhone(holder: CustomViewHolder) {
+        val availability = offices?.get(holder.adapterPosition)?.availability
+
+        if (availability == false || availability == null) {
+            OrderVisitHelper.call(context, offices?.get(holder.adapterPosition)?.mainPhoneNumber)
+        }
+        //                    TODO: Intent to form for ordering a visit.
+    }
+
+    private fun intentToOffice(office: Office) {
+        val intent = Intent(context, OfficeActivity::class.java)
+
+        intent.putExtra(OfficeActivity.OFFICE, office)
+        context.startActivity(intent)
     }
 
     private fun insertTopAndBottomSpaces(holder: CustomViewHolder, position: Int) {
@@ -74,7 +90,11 @@ class OfficesAdapter(private val context: Context, private val offices: ArrayLis
                     context.getString(R.string.availability),
                     R.drawable.circle_green_medical_w_border
             )
-            false -> setAvailability(holder, context.getString(R.string.availability), R.drawable.circle_red_w_border)
+            false -> setAvailability(
+                    holder,
+                    context.getString(R.string.availability),
+                    R.drawable.circle_red_w_border
+            )
             null  -> setAvailability(
                     holder,
                     context.getString(R.string.availability) + context.getString(R.string.ask_on_the_phone),
@@ -88,7 +108,11 @@ class OfficesAdapter(private val context: Context, private val offices: ArrayLis
         holder.view.rec_v_office_availability_img_id.setImageResource(drawableId)
     }
 
-    private fun switchSpacesVisibility(holder: CustomViewHolder, topSpaceVisibility: Int, bottomSpaceVisibility: Int) {
+    private fun switchSpacesVisibility(
+            holder: CustomViewHolder,
+            topSpaceVisibility: Int,
+            bottomSpaceVisibility: Int
+    ) {
         for (visibility in arrayListOf(topSpaceVisibility, bottomSpaceVisibility))
             if (visibility != View.VISIBLE && visibility != View.GONE && visibility != View.INVISIBLE) return
 
