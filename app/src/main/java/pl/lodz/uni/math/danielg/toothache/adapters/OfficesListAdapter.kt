@@ -1,6 +1,5 @@
 package pl.lodz.uni.math.danielg.toothache.adapters
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -19,7 +18,7 @@ import pl.lodz.uni.math.danielg.toothache.models.Office
 import pl.lodz.uni.math.danielg.toothache.models.OfficeShortened
 
 class OfficesListAdapter(private val context: Context, private val offices: ArrayList<OfficeShortened>?) :
-        RecyclerView.Adapter<CustomViewHolder>() {
+    RecyclerView.Adapter<CustomViewHolder>() {
 
     companion object {
         private const val TAG = "OfficesListAdapter"
@@ -40,7 +39,7 @@ class OfficesListAdapter(private val context: Context, private val offices: Arra
         insertTopAndBottomSpaces(holder, position)
         holder.view.rec_v_office_name_txt_id.text = offices?.get(position)?.name
         holder.view.rec_v_office_dr_names_txt_id.text =
-                offices?.get(position)?.doctorsNames?.toStringWithBrs()
+            offices?.get(position)?.doctorsNames?.toStringWithBrs()
         insertAvailability(holder, position)
         onClick(holder)
     }
@@ -50,7 +49,7 @@ class OfficesListAdapter(private val context: Context, private val offices: Arra
             override fun onItemClick(view: View?) {
                 when (view?.id) {
                     view?.rec_v_office_availability_img_id?.id -> callOnThePhone(holder)
-                    else                                       -> intentToOffice(Data.sampleFullOffice)
+                    else -> intentToOffice(Data.sampleFullOffice)
                 }
             }
         }
@@ -74,31 +73,30 @@ class OfficesListAdapter(private val context: Context, private val offices: Arra
 
     private fun insertTopAndBottomSpaces(holder: CustomViewHolder, position: Int) {
         when (position) {
-            0                      -> switchSpacesVisibility(holder, View.VISIBLE, View.GONE)
+            0 -> switchSpacesVisibility(holder, View.VISIBLE, View.GONE)
             offices?.size ?: 0 - 1 -> switchSpacesVisibility(holder, View.GONE, View.VISIBLE)
-            else                   -> switchSpacesVisibility(holder, View.GONE, View.GONE)
+            else -> switchSpacesVisibility(holder, View.GONE, View.GONE)
         }
     }
 
     // switchSpacesVisibility() setAvailability()
 
-    @SuppressLint("SetTextI18n")
     private fun insertAvailability(holder: CustomViewHolder, position: Int) {
         when (offices?.get(position)?.availability) {
-            true  -> setAvailability(
-                    holder,
-                    context.getString(R.string.availability),
-                    R.drawable.circle_green_medical_w_border
+            true -> setAvailability(
+                holder,
+                "${context.getString(R.string.availability)} ${context.getString(R.string.ready_to_treat_n_fill_the_form)}",
+                R.drawable.circle_green_medical_w_border
             )
             false -> setAvailability(
-                    holder,
-                    context.getString(R.string.availability),
-                    R.drawable.circle_red_w_border
+                holder,
+                "${context.getString(R.string.availability)} ${context.getString(R.string.ask_about_latter_visit_on_the_phone)}",
+                R.drawable.circle_red_w_border
             )
-            null  -> setAvailability(
-                    holder,
-                    context.getString(R.string.availability) + context.getString(R.string.ask_on_the_phone),
-                    R.drawable.ic_perm_phone_msg_dark_green_24dp
+            null -> setAvailability(
+                holder,
+                "${context.getString(R.string.availability)} ${context.getString(R.string.ask_on_the_phone)}",
+                R.drawable.ic_perm_phone_msg_dark_green_24dp
             )
         }
     }
@@ -109,9 +107,9 @@ class OfficesListAdapter(private val context: Context, private val offices: Arra
     }
 
     private fun switchSpacesVisibility(
-            holder: CustomViewHolder,
-            topSpaceVisibility: Int,
-            bottomSpaceVisibility: Int
+        holder: CustomViewHolder,
+        topSpaceVisibility: Int,
+        bottomSpaceVisibility: Int
     ) {
         for (visibility in arrayListOf(topSpaceVisibility, bottomSpaceVisibility))
             if (visibility != View.VISIBLE && visibility != View.GONE && visibility != View.INVISIBLE) return

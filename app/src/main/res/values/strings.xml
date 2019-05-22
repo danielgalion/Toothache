@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Toothache</string>
     <string name="choose_using_approach">Wybierz sposób użytkowania</string>
     <string name="use_as">Używaj jako:</string>
@@ -7,7 +7,7 @@
     <string name="list">Lista</string>
     <string name="edit">Edytuj</string>
     <string name="patient_dentist">Pacjent / dentysta</string>
-    <string name="email">Adres e-mail</string>
+    <string name="email" tools:ignore="Typos">Adres e-mail</string>
     <string name="password">Hasło</string>
     <string name="sign_in_upper_case">ZALOGUJ SIĘ</string>
     <string name="dont_u_have_an_acc_up_case">NIE MASZ KONTA?</string>
@@ -15,6 +15,8 @@
     <string name="repeat_password">Powtórz hasło</string>
     <string name="add_your_office_up_case">DODAJ SWÓJ GABINET</string>
     <string name="sign_out">Wyloguj się</string>
-    <string name="availability">Dostępność: </string>
-    <string name="ask_on_the_phone">zapytaj przez telefon</string>
+    <string name="availability">Dostępność:</string>
+    <string name="ready_to_treat_n_fill_the_form">przyjmie od zaraz,\nwypełnij formularz.</string>
+    <string name="ask_on_the_phone">zapytaj przez telefon.</string>
+    <string name="ask_about_latter_visit_on_the_phone">umów wizytę na później przez telefon.</string>
 </resources>
