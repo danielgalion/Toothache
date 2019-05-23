@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    >
+    
+    <TextView
+        android:id="@+id/rec_v_office_phone_numbers_txt_v_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/padding"
+        android:paddingRight="@dimen/padding"
+        android:text="+48 788 139 685"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size_office_desc_item"
+        tools:ignore="RtlSymmetry"
+        />
+    
+    <Button
+        android:id="@+id/rec_v_office_phone_numbers_call_button_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_green_medical"
+        android:drawableStart="@drawable/ic_phone_darker_blue_24dp"
+        android:drawableLeft="@drawable/ic_phone_darker_blue_24dp"
+        android:drawablePadding="@dimen/padding_small"
+        android:padding="@dimen/padding_small"
+        android:text="@string/call"
+        android:textColor="@android:color/black"
+        />
+</LinearLayout>

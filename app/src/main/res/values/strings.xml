@@ -19,4 +19,5 @@
     <string name="ready_to_treat_n_fill_the_form">przyjmie od zaraz,\nwypełnij formularz.</string>
     <string name="ask_on_the_phone">zapytaj przez telefon.</string>
     <string name="ask_about_latter_visit_on_the_phone">umów wizytę na później przez telefon.</string>
+    <string name="call">Zadzwoń</string>
 </resources>

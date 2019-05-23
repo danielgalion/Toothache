@@ -106,21 +106,35 @@
                 tools:ignore="ContentDescription"
                 />
             
-             <!--TODO: Add RecyclerView in RelativeLayout to display phone numbers w/ buttons from ArrayList.-->
+            <!--TODO: Add RecyclerView in RelativeLayout to display phone numbers w/ buttons from ArrayList.-->
             
-            <TextView
-                android:id="@+id/office_phone_no_txt_v_id"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingEnd="30dp"
-                android:paddingRight="30dp"
-                android:text="+48 788 139 685\n+48 788 139 685\n+48 788 139 685"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_size_office_desc_item"
-                tools:ignore="RtlSymmetry"
-                />
+                android:descendantFocusability="blocksDescendants"
+                >
+                
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_v_office_phone_numbers_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    />
+            </RelativeLayout>
         </LinearLayout>
     
     
     </LinearLayout>
 </ScrollView>
+    
+    <!--<TextView-->
+    <!--android:id="@+id/office_phone_no_txt_v_id"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:paddingEnd="30dp"-->
+    <!--android:paddingRight="30dp"-->
+    <!--android:text="+48 788 139 685\n+48 788 139 685\n+48 788 139 685"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:textSize="@dimen/text_size_office_desc_item"-->
+    <!--tools:ignore="RtlSymmetry"-->
+    <!--/>-->
