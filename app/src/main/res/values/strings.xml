@@ -20,4 +20,6 @@
     <string name="ask_on_the_phone">zapytaj przez telefon.</string>
     <string name="ask_about_latter_visit_on_the_phone">umów wizytę na później przez telefon.</string>
     <string name="call">Zadzwoń</string>
+    <string name="fill_the_form_up_case">WYPEŁNIJ FORMULARZ</string>
+    <string name="services">Usługi</string>
 </resources>

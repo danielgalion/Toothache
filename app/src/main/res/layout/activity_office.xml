@@ -1,140 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     >
     
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/padding"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/office_fill_the_form_button_id"
+        app:layout_constraintTop_toTopOf="parent"
         >
         
-        <TextView
-            android:id="@+id/office_name_txt_v_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/padding"
-            android:text="Gabinet taki nowy"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/text_size_office_header"
-            android:textStyle="bold"
-            />
-        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/padding_small"
-            tools:ignore="UseCompoundDrawables"
+            android:orientation="vertical"
+            android:padding="@dimen/padding"
             >
             
-            <ImageView
-                android:layout_width="@dimen/size_smaller_icon"
-                android:layout_height="@dimen/size_smaller_icon"
-                android:layout_marginEnd="@dimen/padding_small"
-                android:layout_marginRight="@dimen/padding_small"
-                android:src="@drawable/ic_perm_identity_darker_blue_24dp"
-                tools:ignore="ContentDescription"
-                />
-            
             <TextView
-                android:id="@+id/office_dr_names_txt_v_id"
+                android:id="@+id/office_name_txt_v_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingEnd="30dp"
-                android:paddingRight="30dp"
-                android:text="Andrzej Rozumny\nPrzemek Barszcz\nPrzemek Barszcz\nPrzemek Barszcz\nPrzemek Barszcz"
+                android:layout_marginBottom="@dimen/padding"
+                android:text="Gabinet taki nowy"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/text_size_office_desc_item"
+                android:textSize="@dimen/text_size_office_header"
                 android:textStyle="bold"
-                tools:ignore="RtlSymmetry"
                 />
-        </LinearLayout>
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/padding_small"
-            >
             
-            <ImageView
-                android:layout_width="@dimen/size_smaller_icon"
-                android:layout_height="@dimen/size_smaller_icon"
-                android:layout_marginEnd="@dimen/padding_small"
-                android:layout_marginRight="@dimen/padding_small"
-                android:src="@drawable/ic_location_on_darker_blue_24dp"
-                tools:ignore="ContentDescription"
-                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/padding_small"
+                tools:ignore="UseCompoundDrawables"
+                >
+                
+                <ImageView
+                    android:layout_width="@dimen/size_smaller_icon"
+                    android:layout_height="@dimen/size_smaller_icon"
+                    android:layout_marginEnd="@dimen/padding_small"
+                    android:layout_marginRight="@dimen/padding_small"
+                    android:src="@drawable/ic_perm_identity_darker_blue_24dp"
+                    tools:ignore="ContentDescription"
+                    />
+                
+                <TextView
+                    android:id="@+id/office_dr_names_txt_v_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/padding_big"
+                    android:paddingRight="@dimen/padding_big"
+                    android:text="Andrzej Rozumny\nPrzemek Barszcz\nPrzemek Barszcz\nPrzemek Barszcz\nPrzemek Barszcz"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_office_desc_item"
+                    android:textStyle="bold"
+                    tools:ignore="RtlSymmetry"
+                    />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/padding_small"
+                >
+                
+                <ImageView
+                    android:layout_width="@dimen/size_smaller_icon"
+                    android:layout_height="@dimen/size_smaller_icon"
+                    android:layout_marginEnd="@dimen/padding_small"
+                    android:layout_marginRight="@dimen/padding_small"
+                    android:src="@drawable/ic_location_on_darker_blue_24dp"
+                    tools:ignore="ContentDescription"
+                    />
+                
+                <TextView
+                    android:id="@+id/office_address_txt_v_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingEnd="@dimen/padding"
+                    android:paddingRight="@dimen/padding"
+                    android:text="ul. Wschodnia 29, 95-100, Zgierz"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_office_desc_item"
+                    tools:ignore="RtlSymmetry"
+                    />
+                
+                <ImageView
+                    android:id="@+id/office_availability_img_v_id"
+                    android:layout_width="@dimen/size_big_clickable_icon"
+                    android:layout_height="@dimen/size_big_clickable_icon"
+                    android:src="@drawable/circle_green_medical_w_border"
+                    tools:ignore="ContentDescription"
+                    />
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/padding"
+                >
+                
+                <ImageView
+                    android:layout_width="@dimen/size_smaller_icon"
+                    android:layout_height="@dimen/size_smaller_icon"
+                    android:layout_marginEnd="@dimen/padding_small"
+                    android:layout_marginRight="@dimen/padding_small"
+                    android:src="@drawable/ic_phone_darker_blue_24dp"
+                    tools:ignore="ContentDescription"
+                    />
+                
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants"
+                    >
+                    
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_v_office_phone_numbers_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
             
             <TextView
-                android:id="@+id/office_address_txt_v_id"
-                android:layout_width="0dp"
+                android:id="@+id/office_services_txt_v_id"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingEnd="@dimen/padding"
-                android:paddingRight="@dimen/padding"
-                android:text="ul. Wschodnia 29, 95-100, Zgierz"
+                android:layout_marginBottom="@dimen/padding_small"
+                android:text="@string/services"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/text_size_office_desc_item"
-                tools:ignore="RtlSymmetry"
+                android:textSize="@dimen/text_size_office_list_header"
+                android:textStyle="bold"
                 />
             
-            <ImageView
-                android:id="@+id/office_availability_img_v_id"
-                android:layout_width="@dimen/size_big_clickable_icon"
-                android:layout_height="@dimen/size_big_clickable_icon"
-                android:src="@drawable/circle_green_medical_w_border"
-                tools:ignore="ContentDescription"
-                />
-        </LinearLayout>
-        
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/padding_small"
-            >
-            
-            <ImageView
-                android:layout_width="@dimen/size_smaller_icon"
-                android:layout_height="@dimen/size_smaller_icon"
-                android:layout_marginEnd="@dimen/padding_small"
-                android:layout_marginRight="@dimen/padding_small"
-                android:src="@drawable/ic_phone_darker_blue_24dp"
-                tools:ignore="ContentDescription"
-                />
-            
-            <!--TODO: Add RecyclerView in RelativeLayout to display phone numbers w/ buttons from ArrayList.-->
             
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_big"
+                android:layout_marginEnd="@dimen/padding_big"
+                android:layout_marginBottom="@dimen/padding"
                 android:descendantFocusability="blocksDescendants"
                 >
                 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_v_office_phone_numbers_id"
+                    android:id="@+id/recycler_v_office_dental_services_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:overScrollMode="never"
                     />
             </RelativeLayout>
+    
+    
+            <org.osmdroid.views.MapView
+                android:id="@+id/office_mapview_id"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                />
+                <!--tilesource="Mapnik"-->
+            
         </LinearLayout>
+    </ScrollView>
     
-    
-    </LinearLayout>
-</ScrollView>
-    
-    <!--<TextView-->
-    <!--android:id="@+id/office_phone_no_txt_v_id"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:paddingEnd="30dp"-->
-    <!--android:paddingRight="30dp"-->
-    <!--android:text="+48 788 139 685\n+48 788 139 685\n+48 788 139 685"-->
-    <!--android:textColor="@android:color/black"-->
-    <!--android:textSize="@dimen/text_size_office_desc_item"-->
-    <!--tools:ignore="RtlSymmetry"-->
-    <!--/>-->
+    <Button
+        android:id="@+id/office_fill_the_form_button_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/selector_green_medical"
+        android:text="@string/fill_the_form_up_case"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

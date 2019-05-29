@@ -2,6 +2,7 @@
 <resources>
     <dimen name="padding">16dp</dimen>
     <dimen name="padding_small">10dp</dimen>
+    <dimen name="padding_big">30dp</dimen>
     <dimen name="margin_tb_small">8dp</dimen>
     <dimen name="button_height">60dp</dimen>
     <dimen name="card_elevation">5dp</dimen>
