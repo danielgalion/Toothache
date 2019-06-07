@@ -28,10 +28,10 @@ class OfficeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_office)
 
-        office_mapview_id.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
-        office_mapview_id.setExpectedCenter(GeoPoint(51.8478115, 19.4195527))
-        office_mapview_id.minZoomLevel = 8.0
-        office_mapview_id.setUseDataConnection(true)
+//        office_mapview_id.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE)
+//        office_mapview_id.setExpectedCenter(GeoPoint(51.8478115, 19.4195527))
+//        office_mapview_id.minZoomLevel = 8.0
+//        office_mapview_id.setUseDataConnection(true)
 
         onIntent()
         fillData()

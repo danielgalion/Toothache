@@ -160,11 +160,11 @@
             </RelativeLayout>
     
     
-            <org.osmdroid.views.MapView
-                android:id="@+id/office_mapview_id"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                />
+            <!--<org.osmdroid.views.MapView-->
+                <!--android:id="@+id/office_mapview_id"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="300dp"-->
+                <!--/>-->
                 <!--tilesource="Mapnik"-->
             
         </LinearLayout>
