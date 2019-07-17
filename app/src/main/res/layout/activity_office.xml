@@ -158,15 +158,15 @@
                     android:overScrollMode="never"
                     />
             </RelativeLayout>
-    
-    
-            <!--<org.osmdroid.views.MapView-->
-                <!--android:id="@+id/office_mapview_id"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="300dp"-->
-                <!--/>-->
-                <!--tilesource="Mapnik"-->
             
+            
+            <org.osmdroid.views.MapView
+                android:id="@+id/office_mapview_id"
+                tilesource="Mapnik"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                />
+        
         </LinearLayout>
     </ScrollView>
     
