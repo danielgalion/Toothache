@@ -22,4 +22,5 @@
     <string name="call">Zadzwoń</string>
     <string name="fill_the_form_up_case">WYPEŁNIJ FORMULARZ</string>
     <string name="services">Usługi</string>
+    <string name="no_of_zl">%1$d zł</string>
 </resources>

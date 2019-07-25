@@ -14,7 +14,7 @@ object Data {
     val sampleFullOffice: Office = Office(
             name = "Something Medical",
             address = "ul. Zamorska 38 m. 3, 77-888 Ur Chaldejskie",
-            availability = true,
+            availability = null,
             dentalServices = arrayListOf(DentalService("Borowanie", 250), DentalService("Wyrywanie", 300)),
             doctorsNames = arrayListOf("Andrzej Rozumny", "Przemek Barszcz"),
             lat = 30.9625,

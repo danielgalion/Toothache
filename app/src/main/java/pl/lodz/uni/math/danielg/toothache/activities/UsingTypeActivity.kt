@@ -20,9 +20,11 @@ class UsingTypeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (shouldExitApp()) finish()
-        else if (isUserTypeAlreadySet()) intentWhenUsingTypeIsAlreadySet()
-        else attachContentView()
+        when {
+            shouldExitApp()        -> finish()
+            isUserTypeAlreadySet() -> intentWhenUsingTypeIsAlreadySet()
+            else                   -> attachContentView()
+        }
 
         title = "Boliząb Polska"
         // TODO: When a dentist is already logged in intent to his dashboard. (Here or in DentistSignIn)
@@ -33,9 +35,11 @@ class UsingTypeActivity : AppCompatActivity() {
         super.onRestart()
         Log.d(TAG, "Called onRestart()")
 
-        if (isUserTypeAlreadySet()) intentWhenUsingTypeIsAlreadySet()
-        else if (isContentViewSet) using_type_lin_lay_id.visibility = View.VISIBLE
-        else attachContentView()
+        when {
+            isUserTypeAlreadySet() -> intentWhenUsingTypeIsAlreadySet()
+            isContentViewSet       -> using_type_lin_lay_id.visibility = View.VISIBLE
+            else                   -> attachContentView()
+        }
     }
 
     private fun shouldExitApp(): Boolean {

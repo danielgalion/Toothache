@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:text="Borowanie"
         android:textColor="@android:color/black"
         android:textSize="@dimen/text_size_office_desc_item"
         />
@@ -27,7 +26,6 @@
         android:id="@+id/rec_v_office_dental_services_price_txt_v_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="200zł"
         android:textColor="@android:color/black"
         android:textSize="@dimen/text_size_office_list_desc_item"
         />

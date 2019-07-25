@@ -14,6 +14,7 @@ import org.osmdroid.util.GeoPoint
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficesDentalServicesAdapter
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficesPhoneNumbersAdapter
+import pl.lodz.uni.math.danielg.toothache.data.Data
 import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
 import pl.lodz.uni.math.danielg.toothache.managers.toStringWithBrs
 import pl.lodz.uni.math.danielg.toothache.models.DentalService
@@ -30,7 +31,8 @@ class OfficeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // OpenStreetMap configuration:
-        Configuration.getInstance().load(applicationContext, PreferenceManager.getDefaultSharedPreferences(applicationContext))
+        Configuration.getInstance()
+            .load(applicationContext, PreferenceManager.getDefaultSharedPreferences(applicationContext))
 
         setContentView(R.layout.activity_office)
 
@@ -47,7 +49,7 @@ class OfficeActivity : AppCompatActivity() {
                 onBackPressed()
                 true
             }
-            else              -> super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -55,6 +57,7 @@ class OfficeActivity : AppCompatActivity() {
         office_mapview_id.setTileSource(TileSourceFactory.MAPNIK)
 //        office_mapview_id.setExpectedCenter(GeoPoint(51.8478115, 19.4195527))
 //        office_mapview_id.minZoomLevel = 8.0
+        office_mapview_id.isTilesScaledToDpi = true
         office_mapview_id.setMultiTouchControls(false)
         office_mapview_id.setUseDataConnection(true)
         office_mapview_id.controller.setCenter(GeoPoint(51.8478115, 19.4195527))
@@ -72,24 +75,39 @@ class OfficeActivity : AppCompatActivity() {
 
         office_name_txt_v_id.text = office?.name
         office_dr_names_txt_v_id.text = office?.doctorsNames?.toStringWithBrs()
+        office_address_txt_v_id.text = office?.address
+
+        setAvailability()
+    }
+
+    private fun setAvailability() {
+        office ?: return
+
+        when (office?.availability) {
+            true -> office_availability_img_v_id.setImageResource(R.drawable.circle_green_medical_w_border)
+            false -> office_availability_img_v_id.setImageResource(R.drawable.circle_red_w_border)
+            null -> office_availability_img_v_id.setImageResource(R.drawable.ic_perm_phone_msg_dark_green_24dp)
+        }
     }
 
     private fun attachRecView() {
+        office ?: return
+
         recycler_v_office_phone_numbers_id.layoutManager = LinearLayoutManager(this)
         recycler_v_office_phone_numbers_id.adapter =
-                OfficesPhoneNumbersAdapter(this, arrayListOf("+48 788 139 685", "+48 788 139 685", "+48 788 139 685"))
+            OfficesPhoneNumbersAdapter(this, office?.phoneNumbers)
+//                arrayListOf("+48 788 139 685", "+48 788 139 685", "+48 788 139 685"))
 
         recycler_v_office_dental_services_id.layoutManager = LinearLayoutManager(this)
-        recycler_v_office_dental_services_id.adapter = OfficesDentalServicesAdapter(
-                this,
-                arrayListOf(
-                        DentalService("Borowanie", 200),
-                        DentalService("Borowanie", 200),
-                        DentalService("Borowanie", 200),
-                        DentalService("Borowanie", 200),
-                        DentalService("Borowanie", 200)
-                )
-        )
+        recycler_v_office_dental_services_id.adapter = OfficesDentalServicesAdapter(this, office?.dentalServices)
+
+//            arrayListOf(
+//                DentalService("Borowanie", 200),
+//                DentalService("Borowanie", 200),
+//                DentalService("Borowanie", 200),
+//                DentalService("Borowanie", 200),
+//                DentalService("Borowanie", 200)
+//            )
 
         var animator = recycler_v_office_phone_numbers_id.itemAnimator as DefaultItemAnimator
 

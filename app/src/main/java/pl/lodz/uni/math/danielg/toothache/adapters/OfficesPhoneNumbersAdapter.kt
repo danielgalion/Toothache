@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.rec_v_offices_phone_numbers_row.view.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
 
-class OfficesPhoneNumbersAdapter(private val context: Context, private val phoneNumbers: ArrayList<String>) :
+class OfficesPhoneNumbersAdapter(private val context: Context, private val phoneNumbers: ArrayList<String>?) :
         RecyclerView.Adapter<CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -19,12 +19,12 @@ class OfficesPhoneNumbersAdapter(private val context: Context, private val phone
     }
 
     override fun getItemCount(): Int {
-        return phoneNumbers.size
+        return phoneNumbers?.size ?: 0
     }
 
 //    TODO: Change hardcoded phone number.
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-
+        holder.view.rec_v_office_phone_numbers_txt_v_id.text = phoneNumbers?.get(position)
     }
 }
