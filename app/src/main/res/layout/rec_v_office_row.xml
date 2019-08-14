@@ -27,58 +27,59 @@
         >
 
         <LinearLayout
+            android:id="@+id/rec_v_office_availability_lin_lay_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables"
             >
 
-            <TextView
-                android:id="@+id/rec_v_office_name_txt_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_tb_small"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_size_office_list_header"
-                android:textStyle="bold"
-                />
-
-            <TextView
-                android:id="@+id/rec_v_office_dr_names_txt_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_tb_small"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/text_size_office_list_desc_item"
-                android:textStyle="bold"
-                />
-
             <LinearLayout
-                android:id="@+id/rec_v_office_availability_lin_lay_id"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                tools:ignore="UseCompoundDrawables"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
                 >
 
                 <TextView
-                    android:id="@+id/rec_v_office_availability_txt_id"
-                    android:layout_width="0dp"
+                    android:id="@+id/rec_v_office_name_txt_id"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginBottom="@dimen/margin_tb_small"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_office_list_header"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/rec_v_office_dr_names_txt_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_tb_small"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_office_list_desc_item"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/rec_v_office_availability_txt_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/text_size_office_list_desc_item"
                     />
-                <!--android:text="@string/availability"-->
 
-                <ImageView
-                    android:id="@+id/rec_v_office_availability_img_id"
-                    android:layout_width="@dimen/size_big_clickable_icon"
-                    android:layout_height="@dimen/size_big_clickable_icon"
-                    tools:ignore="ContentDescription"
-                    />
-                <!--android:src="@drawable/selector_green_medical"-->
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/rec_v_office_availability_img_id"
+                android:layout_width="@dimen/size_big_clickable_icon"
+                android:layout_height="@dimen/size_big_clickable_icon"
+                tools:ignore="ContentDescription"
+                />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

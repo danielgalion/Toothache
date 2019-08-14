@@ -62,6 +62,10 @@ class OfficeActivity : AppCompatActivity() {
         office_mapview_id.setUseDataConnection(true)
         office_mapview_id.controller.setCenter(GeoPoint(51.8478115, 19.4195527))
         office_mapview_id.controller.setZoom(17.0)
+
+        office_mapview_id.setOnTouchListener { _, _ ->
+            true
+        }
     }
 
     private fun onIntent() {
