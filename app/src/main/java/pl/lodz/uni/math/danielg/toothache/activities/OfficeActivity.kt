@@ -14,10 +14,8 @@ import org.osmdroid.util.GeoPoint
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficesDentalServicesAdapter
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficesPhoneNumbersAdapter
-import pl.lodz.uni.math.danielg.toothache.data.Data
 import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
 import pl.lodz.uni.math.danielg.toothache.managers.toStringWithBrs
-import pl.lodz.uni.math.danielg.toothache.models.DentalService
 import pl.lodz.uni.math.danielg.toothache.models.Office
 
 class OfficeActivity : AppCompatActivity() {
@@ -39,7 +37,7 @@ class OfficeActivity : AppCompatActivity() {
         setupMap()
         onIntent()
         fillData()
-        attachRecView()
+        attachRecViews()
         TopBarHelper.setUp(this, "Gabinet", true)
     }
 
@@ -94,7 +92,7 @@ class OfficeActivity : AppCompatActivity() {
         }
     }
 
-    private fun attachRecView() {
+    private fun attachRecViews() {
         office ?: return
 
         recycler_v_office_phone_numbers_id.layoutManager = LinearLayoutManager(this)
