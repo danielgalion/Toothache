@@ -1,93 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add office"
-        />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="1"
-            android:hint="Nazwa gabinetu"
-            android:inputType="text"
-            tools:ignore="UnusedAttribute"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="name"
-            android:hint="Imię i nazwisko"
-            android:inputType="textPersonName"
-            tools:ignore="UnusedAttribute"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="phone"
-            android:hint="Numer telefonu"
-            android:inputType="phone"
-            tools:ignore="UnusedAttribute"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints="postalAddress"
-            android:hint="Adres"
-            android:inputType="textPostalAddress"
-            tools:ignore="UnusedAttribute"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/add_dentist_office_button_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/selector_green_medical"
-        android:text="DODAJ GABINET"
+        android:text="@string/add_office_up_case"
         android:textSize="16sp"
         android:textStyle="bold"
         />
 
-</LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Add office"-->
+            <!--/>-->
+
+            <Button
+                android:id="@+id/add_dentist_office_search_button_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@drawable/selector_gray_border"
+                android:drawableStart="@drawable/ic_search_darker_blue_24dp"
+                android:drawableLeft="@drawable/ic_search_darker_blue_24dp"
+                android:text="@string/search"
+                android:textColor="@color/gray_selector"
+                />
+
+            <!-- TODO: Make RecyclerViews for dr. names and phone numbers.
+                    Add the another one element below when something is written in EditText element. -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name_and_surname"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wskazówka: Wyszukaj miejsce na mapie, w celu ułatwienia odnalezienia gabinetu przez użytkownika. (Aplikacja wskazuje użytkownikom najbliższe gabinety, dzięki usłudze lokalizacji.)"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_v_add_dentist_office_dr_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_v_add_dentist_office_phone_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    android:id="@+id/add_dentist_office_name_edit_t_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="1"
+                    android:hint="@string/office_name"
+                    android:inputType="text"
+                    tools:ignore="UnusedAttribute"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    android:id="@+id/add_dentist_office_drs_name_edit_t_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="name"
+                    android:hint="@string/no_doctor"
+                    android:inputType="textPersonName"
+                    tools:ignore="UnusedAttribute"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    android:id="@+id/add_dentist_office_phone_edit_t_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="phone"
+                    android:hint="@string/no_phone_no"
+                    android:inputType="phone"
+                    tools:ignore="UnusedAttribute"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <EditText
+                    android:id="@+id/add_dentist_office_address_edit_t_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="postalAddress"
+                    android:hint="@string/address"
+                    android:inputType="textPostalAddress"
+                    tools:ignore="UnusedAttribute"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
 
     <!--<android.support.design.widget.TextInputLayout--><!--android:id="@+id/input_layout_password"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content">-->
 

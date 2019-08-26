@@ -23,4 +23,13 @@
     <string name="fill_the_form_up_case">WYPEŁNIJ FORMULARZ</string>
     <string name="services">Usługi</string>
     <string name="no_of_zl">%1$d zł</string>
+    <string name="name_and_surname">Imię i nazwisko:</string>
+    <string name="add_office_up_case">DODAJ GABINET</string>
+    <string name="address" tools:ignore="Typos">Adres</string>
+    <string name="no_phone_no">%1$d. nr tel.</string>
+    <string name="no_doctor">%1$d. lekarz</string>
+    <string name="office_name">Nazwa gabinetu</string>
+    <string name="search">Wyszukaj</string>
+    <string name="price">cena</string>
+    <string name="no_service">%1$d. Usługa</string>
 </resources>
