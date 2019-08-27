@@ -4,9 +4,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_dentist_office.*
 import pl.lodz.uni.math.danielg.toothache.R
+import pl.lodz.uni.math.danielg.toothache.adapters.TextInputAdapter
 import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
 
 class AddDentistOfficeActivity : AppCompatActivity() {
@@ -14,14 +18,17 @@ class AddDentistOfficeActivity : AppCompatActivity() {
         private const val TAG = "AddDentistOfficeActivit"
     }
 
+    private val doctors = arrayListOf("")
+    private val phones = arrayListOf("")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_dentist_office)
 
+        attachRecViews()
         setupButtons()
         TopBarHelper.setUp(this, "Nowy gabinet", true)
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
@@ -29,8 +36,29 @@ class AddDentistOfficeActivity : AppCompatActivity() {
                 onBackPressed()
                 true
             }
-            else              -> super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
+    }
+
+
+    private fun attachRecViews() {
+        recycler_v_add_dentist_office_dr_id.layoutManager = LinearLayoutManager(this)
+        recycler_v_add_dentist_office_dr_id.adapter =
+            TextInputAdapter(this, doctors, TextInputAdapter.DOCTOR)
+
+        recycler_v_add_dentist_office_phone_id.layoutManager = LinearLayoutManager(this)
+        recycler_v_add_dentist_office_phone_id.adapter =
+            TextInputAdapter(this, phones, TextInputAdapter.PHONE)
+
+        var animator = recycler_v_add_dentist_office_dr_id.itemAnimator as DefaultItemAnimator
+
+        animator.supportsChangeAnimations = false
+        ViewCompat.setNestedScrollingEnabled(recycler_v_add_dentist_office_dr_id, false)
+
+        animator = recycler_v_add_dentist_office_phone_id.itemAnimator as DefaultItemAnimator
+
+        animator.supportsChangeAnimations = false
+        ViewCompat.setNestedScrollingEnabled(recycler_v_add_dentist_office_phone_id, false)
     }
 
 //    TODO: Next task: Add Office object to database.
@@ -43,21 +71,21 @@ class AddDentistOfficeActivity : AppCompatActivity() {
 
             // Create a new user with a first, middle, and last name
             val user = hashMapOf(
-                    "first" to "Alan",
-                    "middle" to "Mathison",
-                    "last" to "Turing",
-                    "born" to 1912
+                "first" to "Alan",
+                "middle" to "Mathison",
+                "last" to "Turing",
+                "born" to 1912
             )
 
 // Add a new document with a generated ID
             db.collection("users")
-                    .add(user)
-                    .addOnSuccessListener { documentReference ->
-                        Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                    }
-                    .addOnFailureListener { e ->
-                        Log.w(TAG, "Error adding document", e)
-                    }
+                .add(user)
+                .addOnSuccessListener { documentReference ->
+                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                }
+                .addOnFailureListener { e ->
+                    Log.w(TAG, "Error adding document", e)
+                }
 
             // Create a new user with a first and last name
 //            val user = hashMapOf(

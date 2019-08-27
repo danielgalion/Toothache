@@ -8,8 +8,15 @@ import kotlinx.android.synthetic.main.rec_v_text_input_row.view.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
 
-class TextInputAdapter(private val context: Context, private val textInputs: ArrayList<String>,
-                       private val type: String) : RecyclerView.Adapter<CustomViewHolder>() {
+class TextInputAdapter(
+    private val context: Context, private val textInputs: ArrayList<String>,
+    private val type: String
+) : RecyclerView.Adapter<CustomViewHolder>() {
+
+    companion object {
+        const val DOCTOR = "lekarz"
+        const val PHONE = "nr tel."
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -23,6 +30,14 @@ class TextInputAdapter(private val context: Context, private val textInputs: Arr
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        holder.view.rec_v_text_input_edit_t_id.hint = "${textInputs[position + 1]}. $type"
+        if (type == DOCTOR || type == PHONE)
+            holder.view.rec_v_text_input_edit_t_id.hint = "${textInputs[position + 1]}. $type"
+
+        if (position == itemCount - 1)
+            if (type == DOCTOR)
+                holder.view.rec_v_text_input_edit_t_id
+            else if (type == PHONE)
+                holder.view.rec_v_text_input_edit_t_id
+
     }
 }

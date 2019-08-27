@@ -32,4 +32,5 @@
     <string name="search">Wyszukaj</string>
     <string name="price">cena</string>
     <string name="no_service">%1$d. Usługa</string>
+    <string name="search_office_on_map_hint">Wskazówka: Wyszukaj miejsce na mapie, w celu ułatwienia odnalezienia gabinetu przez użytkownika. (Aplikacja wskazuje użytkownikom najbliższe gabinety, dzięki usłudze lokalizacji.)</string>
 </resources>
