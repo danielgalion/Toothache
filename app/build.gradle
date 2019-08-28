@@ -8,7 +8,10 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "pl.lodz.uni.math.danielg.toothache"
-        minSdkVersion 16
+        minSdkVersion 21
+        // API >= 21 needed for handling no. of methods above the DEX's 64K limit after adding Firestore and Auth.
+        // That API >= 21 uses ART runtime, which natively supports loading multiple DEX files from APK files.
+        // Source: https://developer.android.com/studio/build/multidex
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"

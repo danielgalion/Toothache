@@ -1,6 +1,8 @@
 package pl.lodz.uni.math.danielg.toothache.adapters
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -31,13 +33,26 @@ class TextInputAdapter(
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         if (type == DOCTOR || type == PHONE)
-            holder.view.rec_v_text_input_edit_t_id.hint = "${textInputs[position + 1]}. $type"
+            holder.view.rec_v_text_input_layout_id.hint = "${position + 1}. $type"
 
+        setupPopulatingInputs(holder, position)
+    }
+
+    private fun setupPopulatingInputs(holder: CustomViewHolder, position: Int) {
         if (position == itemCount - 1)
-            if (type == DOCTOR)
-                holder.view.rec_v_text_input_edit_t_id
-            else if (type == PHONE)
-                holder.view.rec_v_text_input_edit_t_id
+            holder.view.rec_v_text_input_edit_t_id.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                    if (s?.length ?: 0 > 0 && position == itemCount - 1) {
+                        textInputs.add("")
+                        notifyItemInserted(itemCount)
+                    }
+                }
 
+                override fun beforeTextChanged(`_`: CharSequence?, _1: Int, _2: Int, _3: Int) {
+                }
+
+                override fun onTextChanged(`_`: CharSequence?, _1: Int, _2: Int, _3: Int) {
+                }
+            })
     }
 }
