@@ -14,6 +14,6 @@ class Office(
 ) : Serializable
 
 class DentalService(
-    val name: String,
-    val price: Int
+    var name: String,
+    var price: Int
 ) : Serializable

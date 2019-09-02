@@ -32,13 +32,17 @@ class OfficeServiceInputAdapter(
             context.getString(R.string.no_service, position + 1)
 
         setupPopulatingInputs(holder, position)
+        onPriceChange(holder, position)
     }
 
     private fun setupPopulatingInputs(holder: CustomViewHolder, position: Int) {
         if (position == itemCount - 1)
             holder.view.rec_v_office_services_input_name_edit_t_id.addTextChangedListener(object :
                 TextWatcher {
+
                 override fun afterTextChanged(s: Editable?) {
+                    serviceInputs[position].name = s.toString()
+
                     if (s?.length ?: 0 > 0 && position == itemCount - 1) {
                         serviceInputs.add(DentalService("", -1))
                         notifyItemInserted(itemCount)
@@ -53,4 +57,19 @@ class OfficeServiceInputAdapter(
             })
     }
 
+    private fun onPriceChange(holder: CustomViewHolder, position: Int) {
+        holder.view.rec_v_office_services_input_price_edit_t_id.addTextChangedListener(object :
+            TextWatcher {
+
+            override fun afterTextChanged(s: Editable?) {
+                serviceInputs[position].price = s.toString().toIntOrNull() ?: -1
+            }
+
+            override fun beforeTextChanged(`_`: CharSequence?, _1: Int, _2: Int, _3: Int) {
+            }
+
+            override fun onTextChanged(`_`: CharSequence?, _1: Int, _2: Int, _3: Int) {
+            }
+        })
+    }
 }

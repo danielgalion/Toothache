@@ -145,7 +145,6 @@
                 android:layout_gravity="end"
                 android:background="@drawable/selector_gray_border"
                 android:drawableStart="@drawable/ic_search_darker_blue_24dp"
-                android:drawableLeft="@drawable/ic_search_darker_blue_24dp"
                 android:text="@string/search"
                 android:textColor="@color/gray_selector" />
 
