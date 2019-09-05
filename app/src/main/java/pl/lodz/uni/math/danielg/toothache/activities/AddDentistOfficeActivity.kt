@@ -86,15 +86,16 @@ class AddDentistOfficeActivity : AppCompatActivity() {
     private fun setupButtons() {
         add_dentist_office_button_id.setOnClickListener {
             val office = hashMapOf(
-                "name" to "Rwacz",
-                "doctorsNames" to arrayListOf("Andrzej Gołota", "Mike Tyson"),
+                "name" to add_dentist_office_name_edit_t_id.text.toString(),
+                "doctorsNames" to
+                        (recycler_v_add_dentist_office_dr_id.adapter as TextInputAdapter).textInputs,
                 "availability" to null,
-                "address" to "ul. Gdańska 590, 00-000 Miejska Wieś",
-                "phoneNumbers" to arrayListOf("+00111222333", "+11000222333", "+55999888777"),
-                "dentalServices" to arrayListOf(
-                    hashMapOf("name" to "Wyrwanie", "price" to 678),
-                    hashMapOf("name" to "Plombowanie", "price" to 876)
-                ),
+                "address" to add_dentist_office_address_edit_t_id.text.toString(),
+                "phoneNumbers" to
+                        (recycler_v_add_dentist_office_phone_id.adapter as TextInputAdapter).textInputs,
+                "dentalServices" to
+                        (recycler_v_add_dentist_office_service_id.adapter as OfficeServiceInputAdapter)
+                            .serviceInputs,
                 "lat" to 30.9625,
                 "lng" to 46.103056
             )
@@ -111,16 +112,3 @@ class AddDentistOfficeActivity : AppCompatActivity() {
         }
     }
 }
-
-//val sampleFullOffice: Office = Office(
-//    name = "Something Medical",
-//    address = "ul. Zamorska 38 m. 3, 77-888 Ur Chaldejskie",
-//    availability = null,
-//    dentalServices = arrayListOf(DentalService("Borowanie", 250), DentalService("Wyrywanie", 300)),
-//    doctorsNames = arrayListOf("Andrzej Rozumny", "Przemek Barszcz"),
-//    lat = 30.9625,
-//    lng = 46.103056,
-//    phoneNumbers = arrayListOf("+48 788 139 685", "+48 7777")
-//
-//)
-

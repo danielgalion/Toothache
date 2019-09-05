@@ -13,8 +13,19 @@ import pl.lodz.uni.math.danielg.toothache.models.DentalService
 
 class OfficeServiceInputAdapter(
     private val context: Context,
-    private val serviceInputs: ArrayList<DentalService>
+    serviceInputs: ArrayList<DentalService>
 ) : RecyclerView.Adapter<CustomViewHolder>() {
+
+    val serviceInputs: ArrayList<DentalService> = serviceInputs
+        get() {
+            field.removeAt(field.size - 1)
+
+            return field
+        }
+
+    companion object {
+        private const val TAG = "OfficeServiceInputAdapt"
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val inflater = LayoutInflater.from(parent.context)

@@ -11,7 +11,8 @@ import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
 
 class TextInputAdapter(
-    private val context: Context, private val textInputs: ArrayList<String>,
+    private val context: Context,
+    textInputs: ArrayList<String>,
     private val type: String
 ) : RecyclerView.Adapter<CustomViewHolder>() {
 
@@ -19,6 +20,13 @@ class TextInputAdapter(
         const val DOCTOR = "lekarz"
         const val PHONE = "nr tel."
     }
+
+    val textInputs: ArrayList<String> = textInputs
+        get() {
+            field.removeAt(field.size - 1)
+
+            return field
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -42,6 +50,8 @@ class TextInputAdapter(
         if (position == itemCount - 1)
             holder.view.rec_v_text_input_edit_t_id.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
+                    textInputs[position] = s.toString()
+
                     if (s?.length ?: 0 > 0 && position == itemCount - 1) {
                         textInputs.add("")
                         notifyItemInserted(itemCount)

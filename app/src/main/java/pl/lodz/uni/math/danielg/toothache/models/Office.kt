@@ -2,7 +2,7 @@ package pl.lodz.uni.math.danielg.toothache.models
 
 import java.io.Serializable
 
-class Office(
+data class Office(
     val name: String,
     val doctorsNames: ArrayList<String>,
     val availability: Boolean?,
@@ -13,7 +13,7 @@ class Office(
     val lng: Double
 ) : Serializable
 
-class DentalService(
+data class DentalService(
     var name: String,
     var price: Int
 ) : Serializable

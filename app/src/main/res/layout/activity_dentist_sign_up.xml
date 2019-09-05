@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-    
+    android:layout_height="match_parent">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/dentist_sign_up_button"
-        >
-        
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:id="@+id/dentist_sign_up_lin_lay_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-            
+            android:orientation="vertical">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                >
-                
+                android:layout_marginTop="30dp">
+
                 <TextView
                     android:id="@+id/dentist_sign_up_email_text"
                     android:layout_width="wrap_content"
@@ -38,9 +33,8 @@
                     android:textColor="@android:color/black"
                     android:textSize="19sp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    tools:ignore="MissingConstraints"
-                    />
-                
+                    tools:ignore="MissingConstraints" />
+
                 <EditText
                     android:id="@+id/dentist_sign_up_email_input"
                     android:layout_width="match_parent"
@@ -52,9 +46,8 @@
                     android:textCursorDrawable="@null"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dentist_sign_up_email_text"
-                    tools:ignore="Autofill,LabelFor"
-                    />
-                
+                    tools:ignore="Autofill,LabelFor" />
+
                 <TextView
                     android:id="@+id/dentist_sign_up_email_error_id"
                     android:layout_width="match_parent"
@@ -64,17 +57,15 @@
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="16sp"
                     android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/dentist_sign_up_email_input"
-                    />
-            
+                    app:layout_constraintTop_toBottomOf="@id/dentist_sign_up_email_input" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-            
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                >
-                
+                android:layout_marginTop="20dp">
+
                 <TextView
                     android:id="@+id/dentist_sign_up_password_text"
                     android:layout_width="wrap_content"
@@ -85,9 +76,8 @@
                     android:textColor="@android:color/black"
                     android:textSize="19sp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    tools:ignore="MissingConstraints"
-                    />
-                
+                    tools:ignore="MissingConstraints" />
+
                 <EditText
                     android:id="@+id/dentist_sign_up_password_input"
                     android:layout_width="match_parent"
@@ -100,9 +90,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dentist_sign_up_password_text"
-                    tools:ignore="Autofill,LabelFor"
-                    />
-                
+                    tools:ignore="Autofill,LabelFor" />
+
                 <Button
                     android:id="@+id/eye_button_id"
                     android:layout_width="40dp"
@@ -112,9 +101,8 @@
                     android:layout_marginBottom="10dp"
                     android:background="@android:color/transparent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    />
-                
+                    app:layout_constraintRight_toRightOf="parent" />
+
                 <ImageView
                     android:layout_width="14dp"
                     android:layout_height="14dp"
@@ -124,9 +112,8 @@
                     android:src="@drawable/ic_visibility_black_24dp"
                     app:layout_constraintEnd_toEndOf="@id/dentist_sign_up_password_input"
                     app:layout_constraintTop_toBottomOf="@id/dentist_sign_up_password_text"
-                    tools:ignore="ContentDescription"
-                    />
-                
+                    tools:ignore="ContentDescription" />
+
                 <TextView
                     android:id="@+id/dentist_sign_up_password_error_id"
                     android:layout_width="match_parent"
@@ -136,18 +123,16 @@
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="16sp"
                     android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/dentist_sign_up_password_input"
-                    />
-            
+                    app:layout_constraintTop_toBottomOf="@id/dentist_sign_up_password_input" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-            
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="32dp"
-                >
-                
+                android:layout_marginBottom="32dp">
+
                 <TextView
                     android:id="@+id/dentist_sign_up_password_rep_text"
                     android:layout_width="wrap_content"
@@ -158,9 +143,8 @@
                     android:textColor="@android:color/black"
                     android:textSize="19sp"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    tools:ignore="MissingConstraints"
-                    />
-                
+                    tools:ignore="MissingConstraints" />
+
                 <EditText
                     android:id="@+id/dentist_sign_up_password_rep_input"
                     android:layout_width="match_parent"
@@ -173,9 +157,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dentist_sign_up_password_rep_text"
-                    tools:ignore="Autofill,LabelFor"
-                    />
-                
+                    tools:ignore="Autofill,LabelFor" />
+
                 <TextView
                     android:id="@+id/dentist_sign_up_password_rep_error_id"
                     android:layout_width="match_parent"
@@ -185,17 +168,15 @@
                     android:textColor="@android:color/holo_red_dark"
                     android:textSize="16sp"
                     android:visibility="gone"
-                    app:layout_constraintTop_toBottomOf="@id/dentist_sign_up_password_rep_input"
-                    />
-            
+                    app:layout_constraintTop_toBottomOf="@id/dentist_sign_up_password_rep_input" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-            
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
-                android:layout_marginBottom="16dp"
-                >
-                
+                android:layout_marginBottom="16dp">
+
                 <View
                     android:id="@+id/dentist_sign_up_right_line_id"
                     android:layout_width="0dp"
@@ -206,10 +187,9 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toRightOf="@id/dentist_sign_up_add_office_text_id"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-                
-                
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
                 <TextView
                     android:id="@+id/dentist_sign_up_add_office_text_id"
                     android:layout_width="wrap_content"
@@ -223,9 +203,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/dentist_sign_up_right_line_id"
                     app:layout_constraintStart_toEndOf="@id/dentist_sign_up_left_line_id"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-                
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <View
                     android:id="@+id/dentist_sign_up_left_line_id"
                     android:layout_width="0dp"
@@ -236,14 +215,143 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/dentist_sign_up_add_office_text_id"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-            
+                    app:layout_constraintTop_toTopOf="parent" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-        
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="vertical">
+
+                <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Add office"-->
+                <!--/>-->
+
+                <!-- TODO: Make RecyclerViews for dr. names and phone numbers.
+                        Add the another one element below when something is written in EditText element. -->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/add_dentist_office_name_edit_t_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="1"
+                        android:hint="@string/office_name"
+                        android:inputType="text"
+                        tools:ignore="UnusedAttribute" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/name_and_surname" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_v_add_dentist_office_dr_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_v_add_dentist_office_phone_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_v_add_dentist_office_service_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+
+                <!--            <com.google.android.material.textfield.TextInputLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                >-->
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/add_dentist_office_drs_name_edit_t_id"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:autofillHints="name"-->
+                <!--                    android:hint="@string/no_doctor"-->
+                <!--                    android:inputType="textPersonName"-->
+                <!--                    tools:ignore="UnusedAttribute"-->
+                <!--                    />-->
+                <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+                <!--            <com.google.android.material.textfield.TextInputLayout-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                >-->
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/add_dentist_office_phone_edit_t_id"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:autofillHints="phone"-->
+                <!--                    android:hint="@string/no_phone_no"-->
+                <!--                    android:inputType="phone"-->
+                <!--                    tools:ignore="UnusedAttribute"-->
+                <!--                    />-->
+                <!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/add_dentist_office_address_edit_t_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="postalAddress"
+                        android:hint="@string/address"
+                        android:inputType="textPostalAddress"
+                        tools:ignore="UnusedAttribute" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_office_on_map_hint" />
+
+                <Button
+                    android:id="@+id/add_dentist_office_search_button_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:background="@drawable/selector_gray_border"
+                    android:drawableStart="@drawable/ic_search_darker_blue_24dp"
+                    android:text="@string/search"
+                    android:textColor="@color/gray_selector" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
-    
+
     <Button
         android:id="@+id/dentist_sign_up_button"
         android:layout_width="match_parent"
@@ -257,6 +365,5 @@
         android:text="@string/sign_up_up_case"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
