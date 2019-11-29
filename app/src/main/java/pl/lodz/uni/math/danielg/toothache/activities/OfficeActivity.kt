@@ -8,13 +8,10 @@ import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_office.*
-import org.osmdroid.config.Configuration
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory
-import org.osmdroid.util.GeoPoint
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficesDentalServicesAdapter
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficesPhoneNumbersAdapter
-import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
+import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
 import pl.lodz.uni.math.danielg.toothache.managers.toStringWithBrs
 import pl.lodz.uni.math.danielg.toothache.models.Office
 
@@ -28,17 +25,12 @@ class OfficeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // OpenStreetMap configuration:
-        Configuration.getInstance()
-            .load(applicationContext, PreferenceManager.getDefaultSharedPreferences(applicationContext))
-
         setContentView(R.layout.activity_office)
 
-        setupMap()
         onIntent()
         fillData()
         attachRecViews()
-        TopBarHelper.setUp(this, "Gabinet", true)
+        setUpTopBar(this, "Gabinet", true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -48,21 +40,6 @@ class OfficeActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-    private fun setupMap() {
-        office_mapview_id.setTileSource(TileSourceFactory.MAPNIK)
-//        office_mapview_id.setExpectedCenter(GeoPoint(51.8478115, 19.4195527))
-//        office_mapview_id.minZoomLevel = 8.0
-        office_mapview_id.isTilesScaledToDpi = true
-        office_mapview_id.setMultiTouchControls(false)
-        office_mapview_id.setUseDataConnection(true)
-        office_mapview_id.controller.setCenter(GeoPoint(51.8478115, 19.4195527))
-        office_mapview_id.controller.setZoom(17.0)
-
-        office_mapview_id.setOnTouchListener { _, _ ->
-            true
         }
     }
 

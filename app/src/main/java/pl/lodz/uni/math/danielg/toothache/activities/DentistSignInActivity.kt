@@ -6,9 +6,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_dentist_sign_in.*
 import pl.lodz.uni.math.danielg.toothache.R
-import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
-import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeHelper
-import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeSharedPreferencesManager
+import pl.lodz.uni.math.danielg.toothache.managers.intentToUsingTypeChoiceActivity
+import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
 
 class DentistSignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,17 +15,17 @@ class DentistSignInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dentist_sign_in)
 
         setupButtons()
-        TopBarHelper.setUp(this, "Logowanie", true, R.drawable.ic_group_white_24dp)
+        setUpTopBar(this, "Logowanie", true, R.drawable.ic_group_white_24dp)
     }
 
     override fun onBackPressed() {
-        UsingTypeHelper.intentToChoiceActivity(this)
+        intentToUsingTypeChoiceActivity(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             android.R.id.home -> {
-                UsingTypeHelper.intentToChoiceActivity(this)
+                intentToUsingTypeChoiceActivity(this)
                 true
             }
             else -> super.onOptionsItemSelected(item)

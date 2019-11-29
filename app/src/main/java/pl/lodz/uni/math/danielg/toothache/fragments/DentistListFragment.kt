@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.fragment_dentist_list.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficesListAdapter
 import pl.lodz.uni.math.danielg.toothache.data.Data
-import pl.lodz.uni.math.danielg.toothache.managers.RecViewVerticalHelper
+import pl.lodz.uni.math.danielg.toothache.managers.attachVerticalRecView
 
 class DentistListFragment : Fragment() {
     override fun onCreateView(
@@ -23,7 +23,7 @@ class DentistListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //        TODO: Later attach real data list
-        RecViewVerticalHelper.attach(
+        attachVerticalRecView(
                 view.context,
                 recycler_v_dentist_list_id,
                 OfficesListAdapter(view.context, Data.sampleOfficeList)

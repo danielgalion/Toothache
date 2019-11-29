@@ -1,17 +1,15 @@
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="pl.lodz.uni.math.danielg.toothache"
-    >
+    package="pl.lodz.uni.math.danielg.toothache">
 
     <!-- TODO: Check if there is no problem with permissions during runtime. -->
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+    <!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+    <!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
+    <!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
 
     <application
         android:allowBackup="true"
@@ -22,13 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
-        tools:replace="android:allowBackup"
-        >
+        tools:replace="android:allowBackup">
         <activity
             android:name=".activities.UsingTypeActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -36,38 +32,33 @@
         </activity>
         <activity
             android:name=".activities.DentistDashboardActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.PatientDashboardActivity"
-            android:noHistory="true"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
+        <!--            android:noHistory="true"-->
         <activity
             android:name=".activities.DentistSignInActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.DentistSignUpActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.AddDentistOfficeActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.OfficeActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="12451000"
-            tools:replace="android:value"
-            />
-        <!-- I should've written a version code by myself, cause the value of a integer below is also present in OSMdroid library (not only in gms...).
+            android:value="@integer/google_play_services_version"
+            tools:replace="android:value" />
+
+        <!--        If you'll want to use OSMdroid -->
+        <!--            android:value="12451000"-->
+        <!-- I should've written a version code by myself, cause the value of an integer below is also present in OSMdroid library (not only in gms...).
              Maybe a solution to this problem exists. Either way I should be aware of updating version code manually after updating Google Services version. -->
-        <!--android:value="@integer/google_play_services_version"-->
     </application>
 </manifest>

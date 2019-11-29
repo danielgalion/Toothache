@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import pl.lodz.uni.math.danielg.toothache.R
-import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
+import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
 
 
 // TODO: Take layout from SignUp from TeamProject
@@ -13,7 +13,7 @@ class DentistSignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dentist_sign_up)
 
-        TopBarHelper.setUp(this, "Rejestracja", true)
+        setUpTopBar(this, "Rejestracja", true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

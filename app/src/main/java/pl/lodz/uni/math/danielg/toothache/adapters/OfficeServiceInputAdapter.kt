@@ -17,11 +17,13 @@ class OfficeServiceInputAdapter(
 ) : RecyclerView.Adapter<CustomViewHolder>() {
 
     val serviceInputs: ArrayList<DentalService> = serviceInputs
-        get() {
-            field.removeAt(field.size - 1)
+//        get() {
+//            field.removeAt(field.size - 1)
+//
+//            return field
+//        }
 
-            return field
-        }
+//    TODO: Make getters on submit.
 
     companion object {
         private const val TAG = "OfficeServiceInputAdapt"

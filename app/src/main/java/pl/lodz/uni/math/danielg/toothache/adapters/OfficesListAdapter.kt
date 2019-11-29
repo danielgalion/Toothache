@@ -17,7 +17,10 @@ import pl.lodz.uni.math.danielg.toothache.managers.toStringWithBrs
 import pl.lodz.uni.math.danielg.toothache.models.Office
 import pl.lodz.uni.math.danielg.toothache.models.OfficeShortened
 
-class OfficesListAdapter(private val context: Context, private val offices: ArrayList<OfficeShortened>?) :
+class OfficesListAdapter(
+    private val context: Context,
+    private val offices: ArrayList<OfficeShortened>?
+) :
     RecyclerView.Adapter<CustomViewHolder>() {
 
     companion object {
@@ -45,14 +48,25 @@ class OfficesListAdapter(private val context: Context, private val offices: Arra
     }
 
     private fun onClick(holder: CustomViewHolder) {
-        holder.itemClickListener = object : ItemClickListener {
-            override fun onItemClick(view: View?) {
-                when (view?.id) {
-                    view?.rec_v_office_availability_img_id?.id -> callOnThePhone(holder)
-                    else -> intentToOffice(Data.sampleFullOffice)
-                }
+        // Original style ('Java-kind') of implementation:
+
+//        holder.itemClickListener = object : ItemClickListener {
+//            override fun onItemClick(view: View?) {
+//                when (view?.id) {
+//                    view?.rec_v_office_availability_img_id?.id -> callOnThePhone(holder)
+//                    else -> intentToOffice(Data.sampleFullOffice)
+//                }
+//            }
+//        }
+
+        // Implementation w/ usage Kotlin-like lambda.
+        holder.itemClickListener?.onItemClick {
+            when (it?.id) {
+                it?.rec_v_office_availability_img_id?.id -> callOnThePhone(holder)
+                else -> intentToOffice(Data.sampleFullOffice)
             }
         }
+
     }
 
     private fun callOnThePhone(holder: CustomViewHolder) {

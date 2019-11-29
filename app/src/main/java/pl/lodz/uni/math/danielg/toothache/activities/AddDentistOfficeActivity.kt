@@ -9,14 +9,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
-//import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_add_dentist_office.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficeServiceInputAdapter
 import pl.lodz.uni.math.danielg.toothache.adapters.TextInputAdapter
-import pl.lodz.uni.math.danielg.toothache.data.Data
 import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
-import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
+import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
 import pl.lodz.uni.math.danielg.toothache.models.DentalService
 
 class AddDentistOfficeActivity : AppCompatActivity() {
@@ -34,7 +32,7 @@ class AddDentistOfficeActivity : AppCompatActivity() {
 
         attachRecViews()
         setupButtons()
-        TopBarHelper.setUp(this, "Nowy gabinet", true)
+        setUpTopBar(this, "Nowy gabinet", true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -81,6 +79,7 @@ class AddDentistOfficeActivity : AppCompatActivity() {
 //     some popup? (It'd impact negatively on performance, cause of drawing layouts one on another. But maybe not and it'll be OK.),
 //     some other feature from OSM API? (Maybe on click 'search' a place will be searched in the background + popup on error.)
 //    TODO: Deleting offices from DB and refreshing on layout.
+//    TODO: Add osmdroid bonus pack for geocoding (search coordinates by address).
 
 
     private fun setupButtons() {
@@ -95,9 +94,7 @@ class AddDentistOfficeActivity : AppCompatActivity() {
                         (recycler_v_add_dentist_office_phone_id.adapter as TextInputAdapter).textInputs,
                 "dentalServices" to
                         (recycler_v_add_dentist_office_service_id.adapter as OfficeServiceInputAdapter)
-                            .serviceInputs,
-                "lat" to 30.9625,
-                "lng" to 46.103056
+                            .serviceInputs
             )
 
             val db = FirebaseFirestore.getInstance()

@@ -15,18 +15,18 @@ class PatientDashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_patient_dashboard)
 
 //        TODO: Later attach real data list
-        RecViewVerticalHelper.attach(this, recycler_v_patient_dashboard_id, OfficesListAdapter(this, Data.sampleOfficeList))
-        TopBarHelper.setUp(this, "Ekran pacjenta", true, R.drawable.ic_group_white_24dp)
+        attachVerticalRecView(this, recycler_v_patient_dashboard_id, OfficesListAdapter(this, Data.sampleOfficeList))
+        setUpTopBar(this, "Ekran pacjenta", true, R.drawable.ic_group_white_24dp)
     }
 
     override fun onBackPressed() {
-        ExitAppHelper.exit(this)
+        exitApp(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             android.R.id.home -> {
-                UsingTypeHelper.intentToChoiceActivity(this)
+                intentToUsingTypeChoiceActivity(this)
                 true
             }
             else -> super.onOptionsItemSelected(item)

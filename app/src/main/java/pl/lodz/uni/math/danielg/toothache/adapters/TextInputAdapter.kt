@@ -22,11 +22,14 @@ class TextInputAdapter(
     }
 
     val textInputs: ArrayList<String> = textInputs
-        get() {
-            field.removeAt(field.size - 1)
+//        get() {
+//            if (field.isNotEmpty()) field.removeAt(field.size - 1)
+//
+//            return field
+//        }
 
-            return field
-        }
+    //    TODO: Make getters on submit.
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val inflater = LayoutInflater.from(parent.context)

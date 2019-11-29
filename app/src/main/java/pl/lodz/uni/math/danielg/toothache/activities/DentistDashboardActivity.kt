@@ -2,7 +2,6 @@ package pl.lodz.uni.math.danielg.toothache.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -15,11 +14,13 @@ import kotlinx.android.synthetic.main.navigation_view.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistEditFragment
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistListFragment
-import pl.lodz.uni.math.danielg.toothache.managers.ExitAppHelper
-import pl.lodz.uni.math.danielg.toothache.managers.TopBarHelper
 import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeSharedPreferencesManager
+import pl.lodz.uni.math.danielg.toothache.managers.exitApp
+import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
 
-class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class DentistDashboardActivity :
+    AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
     companion object {
         private const val TAG = "DentistDashbActivity"
     }
@@ -29,20 +30,20 @@ class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigatio
         setContentView(R.layout.activity_dentist_dashboard)
 
         initNavView()
-        TopBarHelper.setUp(this, "Ekran dentysty", true, R.drawable.ic_menu_white_24dp)
+        setUpTopBar(this, "Ekran dentysty", true, R.drawable.ic_menu_white_24dp)
     }
 
     override fun onBackPressed() {
-        ExitAppHelper.exit(this)
+        exitApp(this)
     }
 
     // TODO: Add office item. Or icon on the right hand side of a TopBar
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.list -> NavigationViewHelper.onListItemClicked(this)
-            R.id.edit -> NavigationViewHelper.onEditItemClicked(this)
-            R.id.patient_dentist -> NavigationViewHelper.onPatientDentistItemClicked(this)
-            R.id.sign_out -> NavigationViewHelper.onSignOutItemClicked(this)
+            R.id.list -> onListItemClicked()
+            R.id.edit -> onEditItemClicked()
+            R.id.patient_dentist -> onPatientDentistItemClicked()
+            R.id.sign_out -> onSignOutItemClicked()
         }
 
         dentist_dashboard_drawer_lay_id.closeDrawer(GravityCompat.START)
@@ -73,51 +74,57 @@ class DentistDashboardActivity : AppCompatActivity(), NavigationView.OnNavigatio
     }
 
     private fun onDrawerSwitchClicked(): Boolean {
-        if (dentist_dashboard_drawer_lay_id.isDrawerOpen(GravityCompat.START)) {
+        if (dentist_dashboard_drawer_lay_id.isDrawerOpen(GravityCompat.START))
             dentist_dashboard_drawer_lay_id.closeDrawer(GravityCompat.START)
-        } else {
+        else
             dentist_dashboard_drawer_lay_id.openDrawer(GravityCompat.START)
-        }
+
         return true
     }
 
-    // TODO: Read about Singleton and maybe use it for purpose of handling navigation items. But, I think it's quite OK now. At least it works.
-    //  Maybe search for a cleaner method with taking this out of this Activity class and to other file
-    //  (A package for every activity? – it sounds to complex for this project – long time to get the line of code).
-    //  But maybe I'm wrong. 'Cleaner' doesn't mean 'not complex'.
-    private object NavigationViewHelper {
-        fun onListItemClicked(activity: DentistDashboardActivity) {
-            Log.d(TAG, "List item is clicked. @onNavigationItemSelected(..)")
-            openFragment(activity, DentistListFragment())
-            activity.supportActionBar!!.title = "Lista"
-        }
+// TODO: Read about Singleton and maybe use it for purpose of handling navigation items. But, I think it's quite OK now. At least it works.
+//  Maybe search for a cleaner method with taking this out of this Activity class and to other file
+//  (A package for every activity? – it sounds to complex for this project – long time to get the line of code).
+//  But maybe I'm wrong. 'Cleaner' doesn't mean 'not complex'.
 
-        fun onEditItemClicked(activity: DentistDashboardActivity) {
-            Log.d(TAG, "Edit item is clicked. @onNavigationItemSelected(..)")
-            openFragment(activity, DentistEditFragment())
-            activity.supportActionBar!!.title = "Edytuj"
-        }
 
-        fun onPatientDentistItemClicked(activity: DentistDashboardActivity) {
-            val intent = Intent(activity, UsingTypeActivity::class.java)
+    private fun onListItemClicked() {
+        Log.d(TAG, "List item is clicked. @onNavigationItemSelected(..)")
+        openFragment(DentistListFragment())
+        supportActionBar!!.title = "Lista"
+    }
 
-            // UsingTypeActivity is in launchMode "singleTask". So there won't be opened multiple windows of this activity.
-            UsingTypeSharedPreferencesManager.setUsingType(activity, UsingTypeSharedPreferencesManager.USING_TYPE_NONE)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            activity.startActivity(intent)
-        }
+    private fun onEditItemClicked() {
+        Log.d(TAG, "Edit item is clicked. @onNavigationItemSelected(..)")
+        openFragment(DentistEditFragment())
+        supportActionBar!!.title = "Edytuj"
+    }
 
-        fun onSignOutItemClicked(activity: DentistDashboardActivity) {
-            val intent = Intent(activity, DentistSignInActivity::class.java)
+    private fun onPatientDentistItemClicked() {
+        val intent = Intent(this, UsingTypeActivity::class.java)
 
-            UsingTypeSharedPreferencesManager.setUsingType(activity, UsingTypeSharedPreferencesManager.USING_TYPE_NONE)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            activity.startActivity(intent)
-        }
+        // UsingTypeActivity is in launchMode "singleTask". So there won't be opened multiple windows of this activity.
+        UsingTypeSharedPreferencesManager.setUsingType(
+            this,
+            UsingTypeSharedPreferencesManager.USING_TYPE_NONE
+        )
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+    }
 
-        private fun openFragment(activity: DentistDashboardActivity, fragment: Fragment) {
-            activity.supportFragmentManager.beginTransaction()
-                    .replace(R.id.dentist_dashboard_fragment_lin_lay, fragment).commit()
-        }
+    private fun onSignOutItemClicked() {
+        val intent = Intent(this, DentistSignInActivity::class.java)
+
+        UsingTypeSharedPreferencesManager.setUsingType(
+            this,
+            UsingTypeSharedPreferencesManager.USING_TYPE_NONE
+        )
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+    }
+
+    private fun openFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.dentist_dashboard_fragment_lin_lay, fragment).commit()
     }
 }

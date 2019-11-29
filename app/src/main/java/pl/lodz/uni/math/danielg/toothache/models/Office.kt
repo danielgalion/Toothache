@@ -8,9 +8,7 @@ data class Office(
     val availability: Boolean?,
     val address: String,
     val phoneNumbers: ArrayList<String>,
-    val dentalServices: ArrayList<DentalService>,
-    val lat: Double,
-    val lng: Double
+    val dentalServices: ArrayList<DentalService>
 ) : Serializable
 
 data class DentalService(

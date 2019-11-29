@@ -17,8 +17,6 @@ object Data {
             availability = null,
             dentalServices = arrayListOf(DentalService("Borowanie", 250), DentalService("Wyrywanie", 300)),
             doctorsNames = arrayListOf("Andrzej Rozumny", "Przemek Barszcz"),
-            lat = 30.9625,
-            lng = 46.103056,
             phoneNumbers = arrayListOf("+48 788 139 685", "+48 7777")
     )
 }
