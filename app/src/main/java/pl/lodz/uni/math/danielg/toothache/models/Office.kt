@@ -7,6 +7,7 @@ data class Office(
     val doctorsNames: ArrayList<String>,
     val availability: Boolean?,
     val address: String,
+    val voivodeship: String,
     val phoneNumbers: ArrayList<String>,
     val dentalServices: ArrayList<DentalService>
 ) : Serializable

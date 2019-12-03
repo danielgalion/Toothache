@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+<!--        android:icon="@drawable/ic_add_white_24dp"-->
+
+    <!--    woj. dolnośląskie-->
+    <!--    woj. kujawsko-pomorskie-->
+    <!--    woj. lubelskie-->
+    <!--    woj. lubuskie-->
+    <!--    woj. łódzkie-->
+    <!--    woj. małopolskie-->
+    <!--    woj. mazowieckie-->
+    <!--    woj. opolskie-->
+    <!--    woj. podkarpackie-->
+    <!--    woj. podlaskie-->
+    <!--    woj. pomorskie-->
+    <!--    woj. śląskie-->
+    <!--    woj. świętokrzyskie-->
+    <!--    woj. warmińsko-mazurskie-->
+    <!--    woj. wielkopolskie-->
+    <!--    woj. zachodniopomorskie-->
+    <item
+        android:id="@+id/patient_dashboard_dolnoslaskie_id"
+        android:title="@string/dolnoslaskie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_kuj_pom_id"
+        android:title="@string/kuj_pom"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_lubelskie_id"
+        android:title="@string/lubelskie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_lubuskie_id"
+        android:title="@string/lubuskie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_lodzkie_id"
+        android:title="@string/lodzkie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_malopolskie_id"
+        android:title="@string/malopolskie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_mazowieckie_id"
+        android:title="@string/mazowieckie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_opolskie_id"
+        android:title="@string/opolskie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_podkarpackie_id"
+        android:title="@string/podkarpackie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_podlaskie_id"
+        android:title="@string/podlaskie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_pomorskie_id"
+        android:title="@string/pomorskie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_slaskie_id"
+        android:title="@string/slaskie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_swietokrzyskie_id"
+        android:title="@string/swietokrzyskie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_warm_maz_id"
+        android:title="@string/warm_maz"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_wielkopolskie_id"
+        android:title="@string/wielkopolskie"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/patient_dashboard_zachodniopom_id"
+        android:title="@string/zachodniopom"
+        app:showAsAction="never"
+        />
+
+</menu>
+
+
+<!--    woj. dolnośląskie-->
+<!--    woj. kujawsko-pomorskie-->
+<!--    woj. lubelskie-->
+<!--    woj. lubuskie-->
+<!--    woj. łódzkie-->
+<!--    woj. małopolskie-->
+<!--    woj. mazowieckie-->
+<!--    woj. opolskie-->
+<!--    woj. podkarpackie-->
+<!--    woj. podlaskie-->
+<!--    woj. pomorskie-->
+<!--    woj. śląskie-->
+<!--    woj. świętokrzyskie-->
+<!--    woj. warmińsko-mazurskie-->
+<!--    woj. wielkopolskie-->
+<!--    woj. zachodniopomorskie-->

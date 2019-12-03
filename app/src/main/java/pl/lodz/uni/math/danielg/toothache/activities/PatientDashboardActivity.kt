@@ -1,6 +1,7 @@
 package pl.lodz.uni.math.danielg.toothache.activities
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_patient_dashboard.*
@@ -21,6 +22,12 @@ class PatientDashboardActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         exitApp(this)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.patient_dashboard, menu)
+
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

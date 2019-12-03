@@ -3,17 +3,17 @@ package pl.lodz.uni.math.danielg.toothache.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_dentist_dashboard.*
 import kotlinx.android.synthetic.main.navigation_view.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistEditFragment
-import pl.lodz.uni.math.danielg.toothache.fragments.DentistListFragment
+import pl.lodz.uni.math.danielg.toothache.fragments.DentistAvailabilityFragment
 import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeSharedPreferencesManager
 import pl.lodz.uni.math.danielg.toothache.managers.exitApp
 import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
@@ -40,7 +40,7 @@ class DentistDashboardActivity :
     // TODO: Add office item. Or icon on the right hand side of a TopBar
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.list -> onListItemClicked()
+            R.id.availability -> onAvailabilityItemClicked()
             R.id.edit -> onEditItemClicked()
             R.id.patient_dentist -> onPatientDentistItemClicked()
             R.id.sign_out -> onSignOutItemClicked()
@@ -51,19 +51,19 @@ class DentistDashboardActivity :
         return true
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.dentist_dashboard, menu)
-
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.dentist_dashboard, menu)
+//
+//        return true
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             android.R.id.home -> onDrawerSwitchClicked()
-            R.id.dentist_dashboard_add_office_id -> {
-                startActivity(Intent(this, AddDentistOfficeActivity::class.java))
-                true
-            }
+//            R.id.dentist_dashboard_add_office_id -> {
+//                startActivity(Intent(this, AddDentistOfficeActivity::class.java))
+//                true
+//            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -88,16 +88,16 @@ class DentistDashboardActivity :
 //  But maybe I'm wrong. 'Cleaner' doesn't mean 'not complex'.
 
 
-    private fun onListItemClicked() {
+    private fun onAvailabilityItemClicked() {
         Log.d(TAG, "List item is clicked. @onNavigationItemSelected(..)")
-        openFragment(DentistListFragment())
-        supportActionBar!!.title = "Lista"
+        openFragment(DentistAvailabilityFragment())
+        supportActionBar!!.title = getString(R.string.availability)
     }
 
     private fun onEditItemClicked() {
         Log.d(TAG, "Edit item is clicked. @onNavigationItemSelected(..)")
         openFragment(DentistEditFragment())
-        supportActionBar!!.title = "Edytuj"
+        supportActionBar!!.title = getString(R.string.edit_office)
     }
 
     private fun onPatientDentistItemClicked() {
@@ -121,6 +121,7 @@ class DentistDashboardActivity :
         )
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
+        FirebaseAuth.getInstance().signOut()
     }
 
     private fun openFragment(fragment: Fragment) {

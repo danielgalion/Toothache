@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/dentist_availability_phone_orders_btn_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:background="@android:color/white"
+        android:drawableEnd="@drawable/ic_perm_phone_msg_dark_green_24dp"
+        android:drawablePadding="-32dp"
+        android:padding="16dp"
+        android:paddingEnd="32dp"
+        android:text="@string/change_to_phone_orders_up_case"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/dentist_availability_iv_id"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/circle_green_medical_w_border"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:id="@+id/dentist_availability_patient_lin_lay_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/patient_underway"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/dentist_availability_name_tv_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/dentist_availability_phone_tv_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/dentist_availability_location_tv_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/dentist_availability_eta_tv_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/dentist_availability_visit_ended_button_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_gravity="end"
+            android:padding="16dp"
+            android:background="@drawable/selector_green_medical"
+            android:text="@string/visit_ended_up_case" />
+    </LinearLayout>
+
+
+</LinearLayout>

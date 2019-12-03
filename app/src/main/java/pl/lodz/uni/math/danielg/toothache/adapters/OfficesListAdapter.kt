@@ -2,7 +2,6 @@ package pl.lodz.uni.math.danielg.toothache.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,13 +12,13 @@ import pl.lodz.uni.math.danielg.toothache.activities.OfficeActivity
 import pl.lodz.uni.math.danielg.toothache.data.Data
 import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
 import pl.lodz.uni.math.danielg.toothache.managers.ItemClickListener
+import pl.lodz.uni.math.danielg.toothache.managers.call
 import pl.lodz.uni.math.danielg.toothache.managers.toStringWithBrs
 import pl.lodz.uni.math.danielg.toothache.models.Office
-import pl.lodz.uni.math.danielg.toothache.models.OfficeShortened
 
 class OfficesListAdapter(
     private val context: Context,
-    private val offices: ArrayList<OfficeShortened>?
+    private val offices: ArrayList<Office>?
 ) :
     RecyclerView.Adapter<CustomViewHolder>() {
 
@@ -48,22 +47,12 @@ class OfficesListAdapter(
     }
 
     private fun onClick(holder: CustomViewHolder) {
-        // Original style ('Java-kind') of implementation:
-
-//        holder.itemClickListener = object : ItemClickListener {
-//            override fun onItemClick(view: View?) {
-//                when (view?.id) {
-//                    view?.rec_v_office_availability_img_id?.id -> callOnThePhone(holder)
-//                    else -> intentToOffice(Data.sampleFullOffice)
-//                }
-//            }
-//        }
-
-        // Implementation w/ usage Kotlin-like lambda.
-        holder.itemClickListener?.onItemClick {
-            when (it?.id) {
-                it?.rec_v_office_availability_img_id?.id -> callOnThePhone(holder)
-                else -> intentToOffice(Data.sampleFullOffice)
+        holder.itemClickListener = object : ItemClickListener {
+            override fun onItemClick(view: View?) {
+                when (view?.id) {
+                    view?.rec_v_office_availability_img_id?.id -> callOnThePhone(holder)
+                    else -> intentToOffice(Data.sampleFullOffice)
+                }
             }
         }
 
@@ -73,7 +62,7 @@ class OfficesListAdapter(
         val availability = offices?.get(holder.adapterPosition)?.availability
 
         if (availability == false || availability == null) {
-            OrderVisitHelper.call(context, offices?.get(holder.adapterPosition)?.mainPhoneNumber)
+            call(context, offices?.get(holder.adapterPosition)?.phoneNumbers?.get(0))
         }
         //                    TODO: Intent to form for ordering a visit.
     }
@@ -99,17 +88,17 @@ class OfficesListAdapter(
         when (offices?.get(position)?.availability) {
             true -> setAvailability(
                 holder,
-                "${context.getString(R.string.availability)} ${context.getString(R.string.ready_to_treat_n_fill_the_form)}",
+                "${context.getString(R.string.availability)}: ${context.getString(R.string.ready_to_treat_n_fill_the_form)}.",
                 R.drawable.circle_green_medical_w_border
             )
             false -> setAvailability(
                 holder,
-                "${context.getString(R.string.availability)} ${context.getString(R.string.ask_about_latter_visit_on_the_phone)}",
+                "${context.getString(R.string.availability)}: ${context.getString(R.string.ask_about_latter_visit_on_the_phone)}.",
                 R.drawable.circle_red_w_border
             )
             null -> setAvailability(
                 holder,
-                "${context.getString(R.string.availability)} ${context.getString(R.string.ask_on_the_phone)}",
+                "${context.getString(R.string.availability)}: ${context.getString(R.string.ask_on_the_phone)}.",
                 R.drawable.ic_perm_phone_msg_dark_green_24dp
             )
         }
@@ -130,16 +119,5 @@ class OfficesListAdapter(
 
         holder.view.rec_v_office_top_space_id.visibility = topSpaceVisibility
         holder.view.rec_v_office_bottom_space_id.visibility = bottomSpaceVisibility
-    }
-
-    object OrderVisitHelper {
-        fun call(context: Context, phoneNumber: String?) {
-            if (!phoneNumber.isNullOrBlank()) {
-                val intent = Intent(Intent.ACTION_DIAL)
-
-                intent.data = Uri.parse("tel:$phoneNumber")
-                context.startActivity(intent)
-            }
-        }
     }
 }

@@ -3,21 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/group_your_offices">
         <item
-            android:id="@+id/list"
+            android:id="@+id/availability"
             android:icon="@drawable/ic_view_list_black_24dp"
-            android:title="@string/list"
+            android:title="@string/availability"
             />
         <item
             android:id="@+id/edit"
             android:icon="@drawable/ic_edit_black_24dp"
-            android:title="@string/edit"
+            android:title="@string/edit_office"
             />
     </group>
     <group android:id="@+id/group_settings">
         <item
             android:id="@+id/patient_dentist"
             android:icon="@drawable/ic_group_black_24dp"
-            android:title="@string/patient_dentist"
+            android:title="@string/delete_account"
             />
         <item
             android:id="@+id/sign_out"

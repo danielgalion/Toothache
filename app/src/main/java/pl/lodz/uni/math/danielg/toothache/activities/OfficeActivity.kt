@@ -1,7 +1,7 @@
 package pl.lodz.uni.math.danielg.toothache.activities
 
+import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -31,6 +31,13 @@ class OfficeActivity : AppCompatActivity() {
         fillData()
         attachRecViews()
         setUpTopBar(this, "Gabinet", true)
+        setupButtons()
+    }
+
+    private fun setupButtons() {
+        office_fill_the_form_button_id.setOnClickListener {
+            startActivity(Intent(this, PatientFormActivity::class.java))
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -78,7 +85,8 @@ class OfficeActivity : AppCompatActivity() {
 //                arrayListOf("+48 788 139 685", "+48 788 139 685", "+48 788 139 685"))
 
         recycler_v_office_dental_services_id.layoutManager = LinearLayoutManager(this)
-        recycler_v_office_dental_services_id.adapter = OfficesDentalServicesAdapter(this, office?.dentalServices)
+        recycler_v_office_dental_services_id.adapter =
+            OfficesDentalServicesAdapter(this, office?.dentalServices)
 
 //            arrayListOf(
 //                DentalService("Borowanie", 200),

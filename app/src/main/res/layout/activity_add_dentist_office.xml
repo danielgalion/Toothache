@@ -14,9 +14,9 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/selector_green_medical"
-        android:text="@string/add_office_up_case"
         android:textSize="16sp"
         android:textStyle="bold" />
+<!--        android:text="@string/add_office_up_case"-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,12 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Add office"-->
-            <!--/>-->
 
             <!-- TODO: Make RecyclerViews for dr. names and phone numbers.
                     Add the another one element below when something is written in EditText element. -->
@@ -132,21 +126,6 @@
                     android:inputType="textPostalAddress"
                     tools:ignore="UnusedAttribute" />
             </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/search_office_on_map_hint" />
-
-            <Button
-                android:id="@+id/add_dentist_office_search_button_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:background="@drawable/selector_gray_border"
-                android:drawableStart="@drawable/ic_search_darker_blue_24dp"
-                android:text="@string/search"
-                android:textColor="@color/gray_selector" />
 
         </LinearLayout>
     </ScrollView>

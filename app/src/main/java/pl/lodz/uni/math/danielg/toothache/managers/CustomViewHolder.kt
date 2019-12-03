@@ -16,15 +16,15 @@ class CustomViewHolder(val view: View, vararg clickableViews: View)
     init {
         view.setOnClickListener(this)
 
-        for(element in clickableViews) {
-            element.setOnClickListener(this)
+        for(index in 0 until clickableViews.size) {
+            clickableViews[index].setOnClickListener(this)
         }
     }
 
     override fun onClick(view: View?) {
         try {
             // Implementation w/o action. TODO: Override it in activities w/ lambda expr.
-            itemClickListener?.onItemClick {}
+            itemClickListener?.onItemClick(view)
         } catch (exception: NullPointerException) {
             Log.e(TAG, "Probably itemClickListener, or a view is null. @onClick(..)")
         }

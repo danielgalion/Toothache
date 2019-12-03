@@ -90,6 +90,7 @@ class AddDentistOfficeActivity : AppCompatActivity() {
                         (recycler_v_add_dentist_office_dr_id.adapter as TextInputAdapter).textInputs,
                 "availability" to null,
                 "address" to add_dentist_office_address_edit_t_id.text.toString(),
+                "voivodeship" to "łódzkie",
                 "phoneNumbers" to
                         (recycler_v_add_dentist_office_phone_id.adapter as TextInputAdapter).textInputs,
                 "dentalServices" to
