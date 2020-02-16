@@ -5,6 +5,7 @@ import java.io.Serializable
 data class Office(
     val id: Int,
     val name: String,
+    val email: String, // TODO: po e-mailu dopasowanie gabinetu do użytkownika
     val doctorsNames: ArrayList<String>,
     val availability: Boolean?,
     val address: String,

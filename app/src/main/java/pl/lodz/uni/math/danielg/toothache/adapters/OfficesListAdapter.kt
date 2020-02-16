@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.rec_v_office_row.view.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.activities.OfficeActivity
-import pl.lodz.uni.math.danielg.toothache.data.Data
+import pl.lodz.uni.math.danielg.toothache.data.sampleOffice
 import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
 import pl.lodz.uni.math.danielg.toothache.managers.ItemClickListener
 import pl.lodz.uni.math.danielg.toothache.managers.call
@@ -51,7 +51,7 @@ class OfficesListAdapter(
             override fun onItemClick(view: View?) {
                 when (view?.id) {
                     view?.rec_v_office_availability_img_id?.id -> callOnThePhone(holder)
-                    else -> intentToOffice(Data.sampleFullOffice)
+                    else -> intentToOffice(sampleOffice)
                 }
             }
         }

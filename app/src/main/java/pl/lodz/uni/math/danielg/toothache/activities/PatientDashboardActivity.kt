@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_patient_dashboard.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficesListAdapter
-import pl.lodz.uni.math.danielg.toothache.data.Data
+import pl.lodz.uni.math.danielg.toothache.data.sampleOfficeList
 import pl.lodz.uni.math.danielg.toothache.managers.*
 
 class PatientDashboardActivity : AppCompatActivity() {
@@ -16,7 +16,11 @@ class PatientDashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_patient_dashboard)
 
 //        TODO: Later attach real data list
-        attachVerticalRecView(this, recycler_v_patient_dashboard_id, OfficesListAdapter(this, Data.sampleOfficeList))
+        attachVerticalRecView(
+            this,
+            recycler_v_patient_dashboard_id,
+            OfficesListAdapter(this, sampleOfficeList)
+        )
         setUpTopBar(this, "Ekran pacjenta", true, R.drawable.ic_group_white_24dp)
     }
 

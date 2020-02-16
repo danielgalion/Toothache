@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_dentist_sign_up.*
 import pl.lodz.uni.math.danielg.toothache.R
+import pl.lodz.uni.math.danielg.toothache.managers.onClickEyeButton
 import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
+import pl.lodz.uni.math.danielg.toothache.managers.setupKeyboardVisibility
 
 class DentistSignUpActivity : AppCompatActivity() {
     companion object {
@@ -23,14 +25,14 @@ class DentistSignUpActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        setUpTopBar(this, "Rejestracja", true)
         setupButtons()
+        setupKeyboardVisibility(this, dentist_sign_up_lin_lay_id)
+        setUpTopBar(this, "Rejestracja", true)
     }
 
     private fun setupButtons() {
-        dentist_sign_up_button.setOnClickListener {
-            signUp()
-        }
+        dentist_sign_up_button.setOnClickListener { signUp() }
+        eye_button_id.setOnClickListener { onClickEyeButton(dentist_sign_up_password_input) }
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -48,7 +50,7 @@ class DentistSignUpActivity : AppCompatActivity() {
         passwd: String = dentist_sign_up_password_input.text.toString(),
         passwdRep: String = dentist_sign_up_password_rep_input.text.toString()
     ) {
-        if (email.isEmpty() || !email.contains('@')) {
+        if (email.isEmpty() || !email.contains('@') || !email.contains('.')) {
             Log.d(TAG, "Invalid email.")
             return
         }
@@ -72,8 +74,10 @@ class DentistSignUpActivity : AppCompatActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
 
 //                    updateUI(null)
