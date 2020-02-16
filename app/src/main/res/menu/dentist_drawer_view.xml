@@ -15,7 +15,7 @@
     </group>
     <group android:id="@+id/group_settings">
         <item
-            android:id="@+id/patient_dentist"
+            android:id="@+id/delete_account"
             android:icon="@drawable/ic_group_black_24dp"
             android:title="@string/delete_account"
             />

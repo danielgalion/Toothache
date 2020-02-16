@@ -57,4 +57,9 @@
     <string name="change_to_phone_orders_up_case">ZMIEŃ NA ZAMÓWIENIA TEL.</string>
     <string name="patient_underway">Pacjent w drodze:</string>
     <string name="visit_ended_up_case">WIZYTA ZAKOŃCZONA</string>
+    <string name="do_u_really_want_to_delete_account">Czy na pewno chcesz usunąć konto?</string>
+    <string name="yes_up_case">TAK</string>
+    <string name="no_up_case">NIE</string>
+    <string name="choose">Wybierz</string>
+    <string name="voivodeship">Województwo:</string>
 </resources>

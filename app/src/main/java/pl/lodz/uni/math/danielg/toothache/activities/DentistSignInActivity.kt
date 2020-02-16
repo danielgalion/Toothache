@@ -2,6 +2,7 @@ package pl.lodz.uni.math.danielg.toothache.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
@@ -11,7 +12,9 @@ import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_dentist_sign_in.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.managers.intentToUsingTypeChoiceActivity
+import pl.lodz.uni.math.danielg.toothache.managers.onClickEyeButton
 import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
+import pl.lodz.uni.math.danielg.toothache.managers.setupKeyboardVisibility
 
 class DentistSignInActivity : AppCompatActivity() {
     companion object {
@@ -27,6 +30,7 @@ class DentistSignInActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         setupButtons()
+        setupKeyboardVisibility(this, dentist_sign_in_lin_lay_id)
         setUpTopBar(this, "Logowanie", true, R.drawable.ic_group_white_24dp)
     }
 
@@ -66,6 +70,12 @@ class DentistSignInActivity : AppCompatActivity() {
             val email = dentist_sign_in_email_input_id.text.toString()
             val passwd = dentist_sign_in_password_input_id.text.toString()
 
+            if (email.isBlank() || passwd.isBlank()) {
+                Toast.makeText(this, "Pole adresu e-mail lub hasła jest puste", Toast.LENGTH_LONG)
+                    .show()
+                return@setOnClickListener
+            }
+
             auth.signInWithEmailAndPassword(email, passwd)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -94,5 +104,22 @@ class DentistSignInActivity : AppCompatActivity() {
         dentist_sign_in_sign_up_button_id.setOnClickListener {
             startActivity(Intent(this, DentistSignUpActivity::class.java))
         }
+
+        eye_button_id.setOnClickListener { onClickEyeButton(dentist_sign_in_password_input_id) }
+
+//        var ifClicked = false
+//
+//        eye_button.setOnClickListener {
+//            if (!ifClicked) {
+//                password_input.transformationMethod = null
+//                ifClicked = true
+//            } else {
+//                password_input.transformationMethod = PasswordTransformationMethod()
+//                ifClicked = false
+//            }
+//            password_input.setSelection(password_input.text.length)
+//            //            println(password_input.text.length)
+//
+//        }
     }
 }

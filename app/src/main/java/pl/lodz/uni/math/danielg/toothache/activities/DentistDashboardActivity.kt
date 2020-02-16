@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.navigation_view.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistEditFragment
 import pl.lodz.uni.math.danielg.toothache.fragments.DentistAvailabilityFragment
+import pl.lodz.uni.math.danielg.toothache.fragments.DentistDeleteFragment
 import pl.lodz.uni.math.danielg.toothache.managers.UsingTypeSharedPreferencesManager
 import pl.lodz.uni.math.danielg.toothache.managers.exitApp
 import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
@@ -42,7 +43,7 @@ class DentistDashboardActivity :
         when (item.itemId) {
             R.id.availability -> onAvailabilityItemClicked()
             R.id.edit -> onEditItemClicked()
-            R.id.patient_dentist -> onPatientDentistItemClicked()
+            R.id.delete_account -> onDeleteAccountItemClicked()
             R.id.sign_out -> onSignOutItemClicked()
         }
 
@@ -100,16 +101,9 @@ class DentistDashboardActivity :
         supportActionBar!!.title = getString(R.string.edit_office)
     }
 
-    private fun onPatientDentistItemClicked() {
-        val intent = Intent(this, UsingTypeActivity::class.java)
-
-        // UsingTypeActivity is in launchMode "singleTask". So there won't be opened multiple windows of this activity.
-        UsingTypeSharedPreferencesManager.setUsingType(
-            this,
-            UsingTypeSharedPreferencesManager.USING_TYPE_NONE
-        )
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
+    private fun onDeleteAccountItemClicked() {
+        openFragment(DentistDeleteFragment())
+        supportActionBar!!.title = getString(R.string.delete_account)
     }
 
     private fun onSignOutItemClicked() {
