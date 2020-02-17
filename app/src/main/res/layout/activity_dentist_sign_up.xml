@@ -187,11 +187,6 @@
                 android:layout_marginEnd="32dp"
                 android:orientation="vertical">
 
-                <!-- TODO: Make RecyclerViews for dr. names and phone numbers.
-                        Add the another one element below when something is written in EditText element. -->
-
-                <!--                TODO: Change IDs to SignUp ones. -->
-
                 <!--                Nazwa gabinetu:    -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -265,8 +260,8 @@
                     android:id="@+id/dentist_sign_up_choose_voivodeship_btn_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
                     android:layout_gravity="end"
+                    android:layout_marginBottom="8dp"
                     android:background="@drawable/selector_blue_medical"
                     android:padding="@dimen/padding_small"
                     android:text="@string/choose"
@@ -284,7 +279,7 @@
                         android:layout_height="wrap_content" />
                 </RelativeLayout>
 
-<!--                Usługi dentystyczne: -->
+                <!--                Usługi dentystyczne: -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

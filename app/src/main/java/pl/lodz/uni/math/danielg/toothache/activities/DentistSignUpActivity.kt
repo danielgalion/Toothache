@@ -6,12 +6,20 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_dentist_sign_up.*
 import pl.lodz.uni.math.danielg.toothache.R
+import pl.lodz.uni.math.danielg.toothache.adapters.OfficeServiceInputAdapter
+import pl.lodz.uni.math.danielg.toothache.adapters.TextInputAdapter
+import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
 import pl.lodz.uni.math.danielg.toothache.managers.onClickEyeButton
 import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
 import pl.lodz.uni.math.danielg.toothache.managers.setupKeyboardVisibility
+import pl.lodz.uni.math.danielg.toothache.models.DentalService
 
 class DentistSignUpActivity : AppCompatActivity() {
     companion object {
@@ -20,15 +28,20 @@ class DentistSignUpActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
+    private val doctors = arrayListOf("")
+    private val phones = arrayListOf("")
+    private val services = arrayListOf(DentalService("", -1))
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dentist_sign_up)
 
         auth = FirebaseAuth.getInstance()
 
-        setupButtons()
+        attachRecViews()
         setupKeyboardVisibility(this, dentist_sign_up_lin_lay_id)
         setUpTopBar(this, "Rejestracja", true)
+        setupButtons()
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -39,6 +52,32 @@ class DentistSignUpActivity : AppCompatActivity() {
             }
             else -> return super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun attachRecViews() {
+        attachRecView(
+            recycler_v_dentist_sign_up_dr_id,
+            TextInputAdapter(this, doctors, TextInputAdapter.DOCTOR)
+        )
+
+        attachRecView(
+            recycler_v_dentist_sign_up_phone_id,
+            TextInputAdapter(this, phones, TextInputAdapter.PHONE)
+        )
+
+        attachRecView(
+            recycler_v_dentist_sign_up_services_id, OfficeServiceInputAdapter(this, services)
+        )
+    }
+
+    private fun attachRecView(rv: RecyclerView, adapter: RecyclerView.Adapter<CustomViewHolder>) {
+        rv.layoutManager = LinearLayoutManager(this)
+        rv.adapter = adapter
+
+        val animator = rv.itemAnimator as DefaultItemAnimator
+
+        animator.supportsChangeAnimations = false
+        ViewCompat.setNestedScrollingEnabled(rv, false)
     }
 
     private fun setupButtons() {
@@ -62,9 +101,6 @@ class DentistSignUpActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    // TODO: Attach inputs' RecViews w/ adapters.
-    //  Firstly, make them populating during typing.
-
     // TODO: Add one office to DB. Then make a method that takes whole list of offices and take
     //  an ID for the next one to insert.
 
@@ -78,6 +114,7 @@ class DentistSignUpActivity : AppCompatActivity() {
         passwd: String = dentist_sign_up_password_input.text.toString(),
         passwdRep: String = dentist_sign_up_password_rep_input.text.toString()
     ) {
+        // TODO: Add simple dialogs on error.
         if (email.isEmpty() || !email.contains('@') || !email.contains('.')) {
             Log.d(TAG, "Invalid email.")
             return
