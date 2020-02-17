@@ -2,6 +2,7 @@ package pl.lodz.uni.math.danielg.toothache.adapters
 
 import android.content.Context
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -13,17 +14,8 @@ import pl.lodz.uni.math.danielg.toothache.models.DentalService
 
 class OfficeServiceInputAdapter(
     private val context: Context,
-    serviceInputs: ArrayList<DentalService>
+    private val serviceInputs: ArrayList<DentalService>
 ) : RecyclerView.Adapter<CustomViewHolder>() {
-
-    val serviceInputs: ArrayList<DentalService> = serviceInputs
-//        get() {
-//            field.removeAt(field.size - 1)
-//
-//            return field
-//        }
-
-//    TODO: Make getters on submit.
 
     companion object {
         private const val TAG = "OfficeServiceInputAdapt"
@@ -41,6 +33,10 @@ class OfficeServiceInputAdapter(
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+        holder.view.rec_v_office_services_input_name_edit_t_id.inputType = InputType.TYPE_CLASS_TEXT
+        holder.view.rec_v_office_services_input_price_edit_t_id.inputType =
+            InputType.TYPE_CLASS_NUMBER
+
         holder.view.rec_v_office_services_input_name_text_id.hint =
             context.getString(R.string.no_service, position + 1)
 
@@ -84,5 +80,11 @@ class OfficeServiceInputAdapter(
             override fun onTextChanged(`_`: CharSequence?, _1: Int, _2: Int, _3: Int) {
             }
         })
+    }
+
+    fun getWrittenServices(): ArrayList<DentalService> {
+        serviceInputs.removeAt(serviceInputs.size - 1)
+
+        return serviceInputs
     }
 }

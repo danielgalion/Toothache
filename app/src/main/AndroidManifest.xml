@@ -1,9 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="pl.lodz.uni.math.danielg.toothache">
-
-    <!-- TODO: Check if there is no problem with permissions during runtime. -->
-
+    
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -31,7 +29,6 @@
         <activity
             android:name=".activities.PatientDashboardActivity"
             android:screenOrientation="portrait" />
-        <!--            android:noHistory="true"-->
         <activity
             android:name=".activities.DentistSignInActivity"
             android:launchMode="singleTask"
@@ -40,9 +37,6 @@
             android:name=".activities.DentistSignUpActivity"
             android:screenOrientation="portrait"
             />
-        <activity
-            android:name=".activities.AddDentistOfficeActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.OfficeActivity"
             android:launchMode="singleTask"
@@ -57,9 +51,5 @@
             android:value="@integer/google_play_services_version"
             tools:replace="android:value" />
 
-        <!--        If you'll want to use OSMdroid -->
-        <!--            android:value="12451000"-->
-        <!-- I should've written a version code by myself, cause the value of an integer below is also present in OSMdroid library (not only in gms...).
-             Maybe a solution to this problem exists. Either way I should be aware of updating version code manually after updating Google Services version. -->
     </application>
 </manifest>

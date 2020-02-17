@@ -2,6 +2,7 @@ package pl.lodz.uni.math.danielg.toothache.adapters
 
 import android.content.Context
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
 
 class TextInputAdapter(
     private val context: Context,
-    textInputs: ArrayList<String>,
+    private val textInputs: ArrayList<String>,
     private val type: String
 ) : RecyclerView.Adapter<CustomViewHolder>() {
 
@@ -20,16 +21,6 @@ class TextInputAdapter(
         const val DOCTOR = "lekarz"
         const val PHONE = "nr tel."
     }
-
-    val textInputs: ArrayList<String> = textInputs
-//        get() {
-//            if (field.isNotEmpty()) field.removeAt(field.size - 1)
-//
-//            return field
-//        }
-
-    //    TODO: Make getters on submit.
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -43,6 +34,12 @@ class TextInputAdapter(
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+
+        if (type == DOCTOR) holder.view.rec_v_text_input_edit_t_id.inputType =
+            InputType.TYPE_TEXT_VARIATION_PERSON_NAME
+        else if (type == PHONE)
+            holder.view.rec_v_text_input_edit_t_id.inputType = InputType.TYPE_CLASS_PHONE
+
         if (type == DOCTOR || type == PHONE)
             holder.view.rec_v_text_input_layout_id.hint = "${position + 1}. $type"
 
@@ -67,5 +64,11 @@ class TextInputAdapter(
                 override fun onTextChanged(`_`: CharSequence?, _1: Int, _2: Int, _3: Int) {
                 }
             })
+    }
+
+    fun getWrittenInputs(): ArrayList<String> {
+        if (textInputs.isNotEmpty()) textInputs.removeAt(textInputs.size - 1)
+
+        return textInputs
     }
 }
