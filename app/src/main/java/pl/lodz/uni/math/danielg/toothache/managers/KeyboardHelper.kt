@@ -21,7 +21,6 @@ fun setupKeyboardVisibility(activity: Activity, view: View) {
     if (view is ViewGroup)
         for (i in 0 until (view).childCount) {
             val innerView = (view).getChildAt(i)
-//                    println(innerView.id)
             setupKeyboardVisibility(activity, innerView)
         }
 }

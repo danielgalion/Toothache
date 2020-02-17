@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_dentist_sign_up.*
@@ -30,11 +31,6 @@ class DentistSignUpActivity : AppCompatActivity() {
         setUpTopBar(this, "Rejestracja", true)
     }
 
-    private fun setupButtons() {
-        dentist_sign_up_button.setOnClickListener { signUp() }
-        eye_button_id.setOnClickListener { onClickEyeButton(dentist_sign_up_password_input) }
-    }
-
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             android.R.id.home -> {
@@ -45,6 +41,38 @@ class DentistSignUpActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupButtons() {
+        dentist_sign_up_button.setOnClickListener { signUp() }
+        eye_button_id.setOnClickListener { onClickEyeButton(dentist_sign_up_password_input) }
+
+        dentist_sign_up_choose_voivodeship_btn_id.setOnClickListener { openVoivodeshipDialog() }
+    }
+
+    private fun openVoivodeshipDialog() {
+        val voivodeships = resources.getStringArray(R.array.voivodeships);
+
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("Wybierz województwo")
+        builder.setSingleChoiceItems(voivodeships, -1) { dialogInterface, i ->
+            dentist_sign_up_voivodeship_tv.text = voivodeships[i]
+            dialogInterface.dismiss()
+        }
+
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+    }
+
+    // TODO: Attach inputs' RecViews w/ adapters.
+    //  Firstly, make them populating during typing.
+
+    // TODO: Add one office to DB. Then make a method that takes whole list of offices and take
+    //  an ID for the next one to insert.
+
+    // TODO: Make contact object on 'Signup' click.
+
+    // TODO: Make hashMap of contact object for Firebase Cloud Firestore.
+
+    // TODO: Check signing up. Attach email to office object.
     private fun signUp(
         email: String = dentist_sign_up_email_input.text.toString(),
         passwd: String = dentist_sign_up_password_input.text.toString(),

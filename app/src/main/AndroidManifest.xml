@@ -4,12 +4,7 @@
 
     <!-- TODO: Check if there is no problem with permissions during runtime. -->
 
-    <!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
-    <!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
-    <!--    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
-    <!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
 
     <application
         android:allowBackup="true"
@@ -43,7 +38,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activities.DentistSignUpActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".activities.AddDentistOfficeActivity"
             android:screenOrientation="portrait" />
@@ -51,9 +47,10 @@
             android:name=".activities.OfficeActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".activities.PatientFormActivity"
+        <activity
+            android:name=".activities.PatientFormActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.gms.version"
