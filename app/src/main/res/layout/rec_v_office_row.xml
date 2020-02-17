@@ -15,6 +15,7 @@
         />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/rec_v_office_card_v_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/padding"
@@ -39,7 +40,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 >

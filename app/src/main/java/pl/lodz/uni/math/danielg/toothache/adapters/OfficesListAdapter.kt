@@ -37,13 +37,22 @@ class OfficesListAdapter(
         return offices?.size ?: 0
     }
 
+    /**
+     * Gdy nazwa gabinetu jest pusta – brak komórki
+     */
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        insertTopAndBottomSpaces(holder, position)
-        holder.view.rec_v_office_name_txt_id.text = offices?.get(position)?.name
-        holder.view.rec_v_office_dr_names_txt_id.text =
-            offices?.get(position)?.doctorsNames?.toStringWithBrs()
-        insertAvailability(holder, position)
-        onClick(holder)
+        if (offices?.get(position)?.name == "") {
+            switchSpacesVisibility(holder, View.GONE, View.GONE)
+            holder.view.rec_v_office_card_v_id.visibility = View.GONE
+        } else {
+            holder.view.rec_v_office_card_v_id.visibility = View.VISIBLE
+            insertTopAndBottomSpaces(holder, position)
+            holder.view.rec_v_office_name_txt_id.text = offices?.get(position)?.name
+            holder.view.rec_v_office_dr_names_txt_id.text =
+                offices?.get(position)?.doctorsNames?.toStringWithBrs()
+            insertAvailability(holder, position)
+            onClick(holder)
+        }
     }
 
     private fun onClick(holder: CustomViewHolder) {

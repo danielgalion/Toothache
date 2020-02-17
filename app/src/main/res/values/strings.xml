@@ -32,6 +32,23 @@
     <string name="search">Wyszukaj</string>
     <string name="price">cena</string>
     <string name="no_service">%1$d. Usługa</string>
+    <string name="edit_office">Edycja gabinetu</string>
+    <string name="delete_account">Usuń konto</string>
+    <string name="phone_no">Nr tel.</string>
+    <string name="location">Miejscowość</string>
+    <string name="eta">Przewidywany czas dojazdu (w min.)</string>
+    <string name="order_visit_up_case">ZAMÓW WIZYTĘ</string>
+    <string name="change_to_phone_orders_up_case">ZMIEŃ NA ZAMÓWIENIA TEL.</string>
+    <string name="patient_underway">Pacjent w drodze:</string>
+    <string name="visit_ended_up_case">WIZYTA ZAKOŃCZONA</string>
+    <string name="do_u_really_want_to_delete_account">Czy na pewno chcesz usunąć konto?</string>
+    <string name="yes_up_case">TAK</string>
+    <string name="no_up_case">NIE</string>
+    <string name="choose">Wybierz</string>
+    <string name="voivodeship">Województwo:</string>
+    <string name="service">usługa</string>
+
+<!--    Województwa: -->
     <string name="dolnoslaskie">dolnośląskie</string>
     <string name="kuj_pom">kujawsko-pomorskie</string>
     <string name="lubelskie">lubelskie</string>
@@ -48,21 +65,6 @@
     <string name="warm_maz">warmińsko-mazurskie</string>
     <string name="wielkopolskie">wielkopolskie</string>
     <string name="zachodniopom">zachodniopomorskie</string>
-    <string name="edit_office">Edycja gabinetu</string>
-    <string name="delete_account">Usuń konto</string>
-    <string name="phone_no">Nr tel.</string>
-    <string name="location">Miejscowość</string>
-    <string name="eta">Przewidywany czas dojazdu (w min.)</string>
-    <string name="order_visit_up_case">ZAMÓW WIZYTĘ</string>
-    <string name="change_to_phone_orders_up_case">ZMIEŃ NA ZAMÓWIENIA TEL.</string>
-    <string name="patient_underway">Pacjent w drodze:</string>
-    <string name="visit_ended_up_case">WIZYTA ZAKOŃCZONA</string>
-    <string name="do_u_really_want_to_delete_account">Czy na pewno chcesz usunąć konto?</string>
-    <string name="yes_up_case">TAK</string>
-    <string name="no_up_case">NIE</string>
-    <string name="choose">Wybierz</string>
-    <string name="voivodeship">Województwo:</string>
-    <string name="service">usługa</string>
 
 <!--    Voivodeship pick dialog items: -->
     <string-array name="voivodeships">
