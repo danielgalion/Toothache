@@ -30,7 +30,7 @@ private fun hideSoftKeyboard(activity: Activity) {
         activity.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
 
     if (activity.currentFocus != null) try {
-        inputMethodManager.hideSoftInputFromWindow(activity.currentFocus.windowToken, 0)
+        inputMethodManager.hideSoftInputFromWindow(activity.currentFocus?.windowToken, 0)
     } catch (e: NullPointerException) {
         e.printStackTrace()
         Log.e(TAG, "NPE caused by not safe call of activity.currentFocus @hideSoftKeyboard(..)")

@@ -15,10 +15,7 @@ import kotlinx.android.synthetic.main.activity_dentist_sign_up.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficeServiceInputAdapter
 import pl.lodz.uni.math.danielg.toothache.adapters.TextInputAdapter
-import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
-import pl.lodz.uni.math.danielg.toothache.managers.onClickEyeButton
-import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
-import pl.lodz.uni.math.danielg.toothache.managers.setupKeyboardVisibility
+import pl.lodz.uni.math.danielg.toothache.managers.*
 import pl.lodz.uni.math.danielg.toothache.models.DentalService
 
 class DentistSignUpActivity : AppCompatActivity() {
@@ -116,39 +113,42 @@ class DentistSignUpActivity : AppCompatActivity() {
     ) {
         // TODO: Add simple dialogs on error.
         if (email.isEmpty() || !email.contains('@') || !email.contains('.')) {
+            showAdequateAlert(this, "Niepoprawny email")
             Log.d(TAG, "Invalid email.")
             return
         }
         if (passwd != passwdRep) {
+            showAdequateAlert(this, "Hasła nie pasują do siebie")
             Log.d(TAG, "Passwords do not match.")
             return
         } else if (passwd.isBlank()) {
+            showAdequateAlert(this, "Hasło nie może być puste")
             Log.d(TAG, "Password is blank.")
             return
         }
 
-        auth.createUserWithEmailAndPassword(email, passwd)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "createUserWithEmail:success")
-                    val user = auth.currentUser
-
-
-//                    updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(
-                        baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-
-//                    updateUI(null)
-                }
-
-                // ...
-            }
+//        auth.createUserWithEmailAndPassword(email, passwd)
+//            .addOnCompleteListener(this) { task ->
+//                if (task.isSuccessful) {
+//                    // Sign in success, update UI with the signed-in user's information
+//                    Log.d(TAG, "createUserWithEmail:success")
+//                    val user = auth.currentUser
+//
+//
+////                    updateUI(user)
+//                } else {
+//                    // If sign in fails, display a message to the user.
+//                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+//                    Toast.makeText(
+//                        baseContext, "Authentication failed.",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//
+//
+////                    updateUI(null)
+//                }
+//
+//                // ...
+//            }
     }
 }
