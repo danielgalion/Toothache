@@ -32,6 +32,7 @@ class DentistDashboardActivity :
 
         initNavView()
         setUpTopBar(this, "Ekran dentysty", true, R.drawable.ic_menu_white_24dp)
+        onAvailabilityItemClicked() // Show availability after opening dentist dashboard.
     }
 
     override fun onBackPressed() {

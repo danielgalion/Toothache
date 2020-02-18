@@ -1,8 +1,10 @@
 package pl.lodz.uni.math.danielg.toothache.managers
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
@@ -39,4 +41,20 @@ private fun showAlert(activity: Activity, message: String) {
 
     alertDialog.show()
     alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(buttonsColor)
+}
+
+fun openVoivodeshipDialog(context: Context?, voivodeshipTv: TextView) {
+    context ?: return
+
+    val voivodeships = context.resources.getStringArray(R.array.voivodeships);
+
+    val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+    builder.setTitle("Wybierz województwo")
+    builder.setSingleChoiceItems(voivodeships, -1) { dialogInterface, i ->
+        voivodeshipTv.text = voivodeships[i]
+        dialogInterface.dismiss()
+    }
+
+    val dialog: AlertDialog = builder.create()
+    dialog.show()
 }

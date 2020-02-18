@@ -53,49 +53,29 @@ class DentistSignUpActivity : AppCompatActivity() {
 
     private fun attachRecViews() {
         attachRecView(
+            this,
             recycler_v_dentist_sign_up_dr_id,
             TextInputAdapter(this, doctors, TextInputAdapter.DOCTOR)
         )
 
         attachRecView(
+            this,
             recycler_v_dentist_sign_up_phone_id,
             TextInputAdapter(this, phones, TextInputAdapter.PHONE)
         )
 
         attachRecView(
-            recycler_v_dentist_sign_up_services_id, OfficeServiceInputAdapter(this, services)
+            this, recycler_v_dentist_sign_up_services_id, OfficeServiceInputAdapter(this, services)
         )
-    }
-
-    private fun attachRecView(rv: RecyclerView, adapter: RecyclerView.Adapter<CustomViewHolder>) {
-        rv.layoutManager = LinearLayoutManager(this)
-        rv.adapter = adapter
-
-        val animator = rv.itemAnimator as DefaultItemAnimator
-
-        animator.supportsChangeAnimations = false
-        ViewCompat.setNestedScrollingEnabled(rv, false)
     }
 
     private fun setupButtons() {
         dentist_sign_up_button.setOnClickListener { signUp() }
         eye_button_id.setOnClickListener { onClickEyeButton(dentist_sign_up_password_input) }
 
-        dentist_sign_up_choose_voivodeship_btn_id.setOnClickListener { openVoivodeshipDialog() }
-    }
-
-    private fun openVoivodeshipDialog() {
-        val voivodeships = resources.getStringArray(R.array.voivodeships);
-
-        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-        builder.setTitle("Wybierz województwo")
-        builder.setSingleChoiceItems(voivodeships, -1) { dialogInterface, i ->
-            dentist_sign_up_voivodeship_tv.text = voivodeships[i]
-            dialogInterface.dismiss()
+        dentist_sign_up_choose_voivodeship_btn_id.setOnClickListener {
+            openVoivodeshipDialog(this, dentist_sign_up_voivodeship_tv)
         }
-
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
     }
 
     // TODO: Add one office to DB. Then make a method that takes whole list of offices and take
