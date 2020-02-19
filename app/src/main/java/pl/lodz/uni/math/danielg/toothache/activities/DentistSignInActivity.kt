@@ -2,8 +2,6 @@ package pl.lodz.uni.math.danielg.toothache.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.method.PasswordTransformationMethod
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -76,28 +74,31 @@ class DentistSignInActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            auth.signInWithEmailAndPassword(email, passwd)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "signInWithEmail:success")
-                        val user = auth.currentUser
+            startActivity(Intent(this, DentistDashboardActivity::class.java))
 
-//                        TODO: Make code cleaning.
-//                        updateUI(user)
-                        startActivity(Intent(this, DentistDashboardActivity::class.java))
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w(TAG, "signInWithEmail:failure", task.exception)
-                        Toast.makeText(
-                            baseContext, "Authentication failed.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-//                        updateUI(null)
-                    }
 
-                    // ...
-                }
+//            auth.signInWithEmailAndPassword(email, passwd)
+//                .addOnCompleteListener(this) { task ->
+//                    if (task.isSuccessful) {
+//                        // Sign in success, update UI with the signed-in user's information
+//                        Log.d(TAG, "signInWithEmail:success")
+//                        val user = auth.currentUser
+//
+////                        TODO: Make code cleaning.
+////                        updateUI(user)
+//                        startActivity(Intent(this, DentistDashboardActivity::class.java))
+//                    } else {
+//                        // If sign in fails, display a message to the user.
+//                        Log.w(TAG, "signInWithEmail:failure", task.exception)
+//                        Toast.makeText(
+//                            baseContext, "Authentication failed.",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+////                        updateUI(null)
+//                    }
+//
+//                    // ...
+//                }
 
         }
 

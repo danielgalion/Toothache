@@ -82,19 +82,10 @@ class OfficeActivity : AppCompatActivity() {
         recycler_v_office_phone_numbers_id.layoutManager = LinearLayoutManager(this)
         recycler_v_office_phone_numbers_id.adapter =
             OfficesPhoneNumbersAdapter(this, office?.phoneNumbers)
-//                arrayListOf("+48 788 139 685", "+48 788 139 685", "+48 788 139 685"))
 
         recycler_v_office_dental_services_id.layoutManager = LinearLayoutManager(this)
         recycler_v_office_dental_services_id.adapter =
             OfficesDentalServicesAdapter(this, office?.dentalServices)
-
-//            arrayListOf(
-//                DentalService("Borowanie", 200),
-//                DentalService("Borowanie", 200),
-//                DentalService("Borowanie", 200),
-//                DentalService("Borowanie", 200),
-//                DentalService("Borowanie", 200)
-//            )
 
         var animator = recycler_v_office_phone_numbers_id.itemAnimator as DefaultItemAnimator
 

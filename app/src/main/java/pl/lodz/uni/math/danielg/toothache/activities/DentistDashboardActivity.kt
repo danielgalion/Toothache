@@ -53,19 +53,9 @@ class DentistDashboardActivity :
         return true
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.dentist_dashboard, menu)
-//
-//        return true
-//    }
-
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when (item?.itemId) {
             android.R.id.home -> onDrawerSwitchClicked()
-//            R.id.dentist_dashboard_add_office_id -> {
-//                startActivity(Intent(this, AddDentistOfficeActivity::class.java))
-//                true
-//            }
             else -> super.onOptionsItemSelected(item)
         }
     }
