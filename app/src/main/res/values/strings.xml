@@ -65,8 +65,9 @@
     <string name="warm_maz">warmińsko-mazurskie</string>
     <string name="wielkopolskie">wielkopolskie</string>
     <string name="zachodniopom">zachodniopomorskie</string>
+    <string name="eta_in_minutes">Czas dojazdu w minutach: %1$d</string>
 
-<!--    Voivodeship pick dialog items: -->
+    <!--    Voivodeship pick dialog items: -->
     <string-array name="voivodeships">
         <item>dolnośląskie</item>
         <item>kujawsko-pomorskie</item>

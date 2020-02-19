@@ -7,7 +7,7 @@ private const val TAG = "Office"
 
 data class Office(
     val name: String,
-    val email: String, // TODO: po e-mailu dopasowanie gabinetu do użytkownika
+    val email: String, // po e-mailu dopasowanie gabinetu do użytkownika
     val doctorsNames: ArrayList<String>,
     val availability: Boolean?,
     val address: String,
@@ -17,7 +17,7 @@ data class Office(
     var patientName: String, // Pusty oznacza brak zgłoszenia. // TODO: <- W widoku dentysty
     var patientPhone: String,
     var patientCity: String,
-    var patientETA: Int
+    var patientETA: Long
 ) : Serializable {
     fun generateMapToSend(): HashMap<String, Serializable?> {
         Log.d(TAG, "office: $this")
@@ -42,10 +42,3 @@ data class DentalService(
     var name: String,
     var price: Int
 ) : Serializable
-
-
-// TODO: Identyfikacja gabinetu (musi być coś unikatowego)
-//  Prosty pomysł: brać 0, gdy to jest 1. element.
-//                 brać najwyższy z id + 1, gdy są już elementy na liście
-//                 brać brakujący pomiędzy, gdy jest "przerwa" po usunięciu elementu listy.
-

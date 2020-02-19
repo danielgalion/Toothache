@@ -93,15 +93,9 @@ class DentistSignUpActivity : AppCompatActivity() {
             patientName = "",
             patientPhone = "",
             patientCity = "",
-            patientETA = -1
+            patientETA = -1L
         )
     }
-
-    // TODO: CHECK THIS
-    //  Add one office to DB.
-
-    // TODO: CHECK THIS
-    //  Make hashMap of contact object for Firebase Cloud Firestore.
 
     // TODO: Check signing up.
     private fun signUp(
@@ -129,7 +123,6 @@ class DentistSignUpActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
-//                    val user = auth.currentUser
 
                     logInputData()
 
@@ -144,8 +137,6 @@ class DentistSignUpActivity : AppCompatActivity() {
                         .addOnFailureListener { e ->
                             Log.w(TAG, "Error adding document", e)
                         }
-
-//                    updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -153,12 +144,7 @@ class DentistSignUpActivity : AppCompatActivity() {
                         this,
                         "Rejestracja nie powiodła się.\nSprawdź e-mail i pola hasła"
                     )
-
-
-//                    updateUI(null)
                 }
-
-                // ...
             }
     }
 }

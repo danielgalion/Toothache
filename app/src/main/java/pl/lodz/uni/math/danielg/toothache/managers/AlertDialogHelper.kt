@@ -13,7 +13,7 @@ import pl.lodz.uni.math.danielg.toothache.R
 
 private const val TAG = "AlertDialogHelper"
 
-fun showAdequateAlert(activity: Activity, message: String) {
+fun showAdequateAlert(activity: Activity?, message: String) {
 
     try {
         if (android.os.Build.VERSION.SDK_INT == 25 || android.os.Build.VERSION.SDK_INT == 28)
@@ -30,7 +30,9 @@ fun showAdequateAlert(activity: Activity, message: String) {
     }
 }
 
-private fun showAlert(activity: Activity, message: String) {
+private fun showAlert(activity: Activity?, message: String) {
+    activity ?: return
+
     val alertDialog = AlertDialog.Builder(activity).create()
     val buttonsColor = ContextCompat.getColor(activity, R.color.blue_medical_selector)
 

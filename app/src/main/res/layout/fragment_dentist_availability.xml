@@ -24,7 +24,6 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_marginBottom="32dp"
-        android:src="@drawable/circle_green_medical_w_border"
         tools:ignore="ContentDescription" />
 
     <LinearLayout
@@ -33,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:visibility="gone"
         android:orientation="vertical">
 
         <TextView

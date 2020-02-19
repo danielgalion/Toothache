@@ -6,7 +6,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_dentist_sign_in.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.managers.intentToUsingTypeChoiceActivity
@@ -37,11 +36,11 @@ class DentistSignInActivity : AppCompatActivity() {
 
         val currentUser = auth.currentUser
 
-        if (currentUser != null) onSignIn(currentUser)
+        if (currentUser != null) onSignIn()
         // Check if user is signed in (non-null) and update UI accordingly.
     }
 
-    private fun onSignIn(user: FirebaseUser) {
+    private fun onSignIn() {
 //        TODO: Depend it w/ user specific info if it'd be needed.
         startActivity(Intent(this, DentistDashboardActivity::class.java))
     }
