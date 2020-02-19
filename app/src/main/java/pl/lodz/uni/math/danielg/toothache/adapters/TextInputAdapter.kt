@@ -57,7 +57,6 @@ class TextInputAdapter(
         return textInputs.size
     }
 
-    // TODO: Do the same as in office services adapter (insert old values).
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         if (isFlagsArrayCreated) initInput(holder, position)
 
@@ -105,11 +104,5 @@ class TextInputAdapter(
                 override fun onTextChanged(`_`: CharSequence?, _1: Int, _2: Int, _3: Int) {
                 }
             })
-    }
-
-    fun getWrittenInputs(): ArrayList<String> {
-        if (textInputs.isNotEmpty()) textInputs.removeAt(textInputs.size - 1)
-
-        return textInputs
     }
 }

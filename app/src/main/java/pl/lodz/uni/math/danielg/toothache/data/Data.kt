@@ -22,7 +22,6 @@ import pl.lodz.uni.math.danielg.toothache.models.Office
 
 val sampleOfficeList: ArrayList<Office> = arrayListOf(
     Office(
-        id = 0,
         name = "Something Medical",
         email = "andrzej.golota@bokser.pl",
         address = "ul. Zamorska 38 m. 3, 77-888 Ur Chaldejskie",
@@ -40,7 +39,6 @@ val sampleOfficeList: ArrayList<Office> = arrayListOf(
         patientETA = 25
     ),
     Office(
-        id = 1,
         name = "",
         email = "anzelm@dentysta.pl",
         address = "ul. Zamorska 38 m. 3, 77-888 Ur Chaldejskie",
@@ -62,7 +60,6 @@ val sampleOfficeList: ArrayList<Office> = arrayListOf(
         patientETA = 0
     ),
     Office(
-        id = 2,
         name = "Teeth Mechanic",
         email = "abraham@udarowa.pl",
         address = "ul. Zamorska 38 m. 3, 77-888 Ur Chaldejskie",
@@ -80,7 +77,6 @@ val sampleOfficeList: ArrayList<Office> = arrayListOf(
         patientETA = 0
     ),
     Office(
-        id = 3,
         name = "Something Medical",
         email = "andrzej.golota@bokser.pl",
         address = "ul. Zamorska 38 m. 3, 77-888 Ur Chaldejskie",
@@ -98,7 +94,6 @@ val sampleOfficeList: ArrayList<Office> = arrayListOf(
         patientETA = 25
     ),
     Office(
-        id = 4,
         name = "",
         email = "anzelm@dentysta.pl",
         address = "ul. Zamorska 38 m. 3, 77-888 Ur Chaldejskie",
@@ -120,7 +115,6 @@ val sampleOfficeList: ArrayList<Office> = arrayListOf(
         patientETA = 0
     ),
     Office(
-        id = 5,
         name = "Teeth Mechanic",
         email = "abraham@udarowa.pl",
         address = "ul. Zamorska 38 m. 3, 77-888 Ur Chaldejskie",
@@ -140,7 +134,6 @@ val sampleOfficeList: ArrayList<Office> = arrayListOf(
 )
 
 val sampleOffice: Office = Office(
-    id = 3,
     name = "Something Medical",
     email = "pawel@zab.com",
     address = "ul. Zamorska 38 m. 3, 77-888 Ur Chaldejskie",

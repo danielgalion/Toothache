@@ -3,20 +3,16 @@ package pl.lodz.uni.math.danielg.toothache.activities
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_dentist_sign_up.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficeServiceInputAdapter
 import pl.lodz.uni.math.danielg.toothache.adapters.TextInputAdapter
 import pl.lodz.uni.math.danielg.toothache.managers.*
 import pl.lodz.uni.math.danielg.toothache.models.DentalService
+import pl.lodz.uni.math.danielg.toothache.models.Office
 
 class DentistSignUpActivity : AppCompatActivity() {
     companion object {
@@ -78,20 +74,41 @@ class DentistSignUpActivity : AppCompatActivity() {
         }
     }
 
-    // TODO: Add one office to DB. Then make a method that takes whole list of offices and take
-    //  an ID for the next one to insert.
+    private fun logInputData() {
+        Log.d(TAG, "doctors: $doctors")
+        Log.d(TAG, "phones: $phones")
+        Log.d(TAG, "services: $services")
+    }
 
-    // TODO: Make contact object on 'Signup' click.
+    private fun createOffice(): Office {
+        return Office(
+            name = dentist_sign_up_name_edit_t_id.text.toString(),
+            email = dentist_sign_up_email_input.text.toString(),
+            doctorsNames = doctors.getWrittenInputs(),
+            availability = null,
+            address = dentist_sign_up_address_edit_t_id.text.toString(),
+            voivodeship = dentist_sign_up_voivodeship_tv.text.toString(),
+            phoneNumbers = phones.getWrittenInputs(),
+            dentalServices = services.getWrittenInputs(),
+            patientName = "",
+            patientPhone = "",
+            patientCity = "",
+            patientETA = -1
+        )
+    }
 
-    // TODO: Make hashMap of contact object for Firebase Cloud Firestore.
+    // TODO: CHECK THIS
+    //  Add one office to DB.
 
-    // TODO: Check signing up. Attach email to office object.
+    // TODO: CHECK THIS
+    //  Make hashMap of contact object for Firebase Cloud Firestore.
+
+    // TODO: Check signing up.
     private fun signUp(
         email: String = dentist_sign_up_email_input.text.toString(),
         passwd: String = dentist_sign_up_password_input.text.toString(),
         passwdRep: String = dentist_sign_up_password_rep_input.text.toString()
     ) {
-        // TODO: Add simple dialogs on error.
         if (email.isEmpty() || !email.contains('@') || !email.contains('.')) {
             showAdequateAlert(this, "Niepoprawny email")
             Log.d(TAG, "Invalid email.")
@@ -107,28 +124,41 @@ class DentistSignUpActivity : AppCompatActivity() {
             return
         }
 
-//        auth.createUserWithEmailAndPassword(email, passwd)
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    // Sign in success, update UI with the signed-in user's information
-//                    Log.d(TAG, "createUserWithEmail:success")
+        auth.createUserWithEmailAndPassword(email, passwd)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "createUserWithEmail:success")
 //                    val user = auth.currentUser
-//
-//
-////                    updateUI(user)
-//                } else {
-//                    // If sign in fails, display a message to the user.
-//                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-//                    Toast.makeText(
-//                        baseContext, "Authentication failed.",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//
-//
-////                    updateUI(null)
-//                }
-//
-//                // ...
-//            }
+
+                    logInputData()
+
+                    val db = FirebaseFirestore.getInstance()
+                    val office = createOffice()
+
+                    db.collection("office").document(office.email)
+                        .set(office.generateMapToSend())
+                        .addOnSuccessListener { _ ->
+                            Log.d(TAG, "DocumentSnapshot set: $office")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.w(TAG, "Error adding document", e)
+                        }
+
+//                    updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    showAdequateAlert(
+                        this,
+                        "Rejestracja nie powiodła się.\nSprawdź e-mail i pola hasła"
+                    )
+
+
+//                    updateUI(null)
+                }
+
+                // ...
+            }
     }
 }

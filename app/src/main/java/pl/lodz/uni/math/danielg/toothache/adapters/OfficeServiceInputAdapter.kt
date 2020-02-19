@@ -128,10 +128,4 @@ class OfficeServiceInputAdapter(
             }
         })
     }
-
-    fun getWrittenServices(): ArrayList<DentalService> {
-        serviceInputs.removeAt(serviceInputs.size - 1)
-
-        return serviceInputs
-    }
 }

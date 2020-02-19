@@ -26,3 +26,13 @@ fun attachRecView(
     animator.supportsChangeAnimations = false
     ViewCompat.setNestedScrollingEnabled(rv, false)
 }
+
+/**
+ * Input RecViews have one additional empty element that is for enter the next value.
+ * Returns array of elements w/ a given type w/o the last element.
+ */
+fun <T> ArrayList<T>.getWrittenInputs(): ArrayList<T> {
+    if (this.isNotEmpty()) this.removeAt(this.size - 1)
+
+    return this
+}

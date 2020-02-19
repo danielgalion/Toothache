@@ -1,9 +1,11 @@
 package pl.lodz.uni.math.danielg.toothache.models
 
+import android.util.Log
 import java.io.Serializable
 
+private const val TAG = "Office"
+
 data class Office(
-    val id: Int,
     val name: String,
     val email: String, // TODO: po e-mailu dopasowanie gabinetu do użytkownika
     val doctorsNames: ArrayList<String>,
@@ -16,7 +18,25 @@ data class Office(
     var patientPhone: String,
     var patientCity: String,
     var patientETA: Int
-) : Serializable
+) : Serializable {
+    fun generateMapToSend(): HashMap<String, Serializable?> {
+        Log.d(TAG, "office: $this")
+
+        return hashMapOf(
+            "name" to name,
+            "email" to email,
+            "doctorsNames" to doctorsNames,
+            "availability" to availability,
+            "address" to address,
+            "phoneNumbers" to phoneNumbers,
+            "dentalServices" to dentalServices,
+            "patientName" to patientName,
+            "patientPhone" to patientPhone,
+            "patientCity" to patientCity,
+            "patientETA" to patientETA
+        )
+    }
+}
 
 data class DentalService(
     var name: String,
