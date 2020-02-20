@@ -13,7 +13,7 @@ import pl.lodz.uni.math.danielg.toothache.managers.CustomViewHolder
 
 class TextInputAdapter(
     private val context: Context?,
-    private val textInputs: ArrayList<String>,
+    val textInputs: ArrayList<String>,
     private val type: String
 ) : RecyclerView.Adapter<CustomViewHolder>() {
 

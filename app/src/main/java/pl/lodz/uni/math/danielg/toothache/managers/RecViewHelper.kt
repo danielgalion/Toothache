@@ -5,6 +5,7 @@ import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import pl.lodz.uni.math.danielg.toothache.models.DentalService
 
 fun attachVerticalRecView(
     context: Context, recyclerView: RecyclerView, adapter: RecyclerView.Adapter<CustomViewHolder>
@@ -15,13 +16,13 @@ fun attachVerticalRecView(
 
 fun attachRecView(
     context: Context?,
-    rv: RecyclerView,
+    rv: RecyclerView?,
     adapter: RecyclerView.Adapter<CustomViewHolder>
 ) {
-    rv.layoutManager = LinearLayoutManager(context)
-    rv.adapter = adapter
+    rv?.layoutManager = LinearLayoutManager(context)
+    rv?.adapter = adapter
 
-    val animator = rv.itemAnimator as DefaultItemAnimator
+    val animator = rv?.itemAnimator as DefaultItemAnimator
 
     animator.supportsChangeAnimations = false
     ViewCompat.setNestedScrollingEnabled(rv, false)
@@ -31,8 +32,18 @@ fun attachRecView(
  * Input RecViews have one additional empty element that is for enter the next value.
  * Returns array of elements w/ a given type w/o the last element.
  */
-fun <T> ArrayList<T>.getWrittenInputs(): ArrayList<T> {
+fun ArrayList<String>.getWrittenInputs(): ArrayList<String> {
     if (this.isNotEmpty()) this.removeAt(this.size - 1)
+
+    for (i in 0 until this.size) if (this[i].isBlank()) this.removeAt(i)
+
+    return this
+}
+
+fun ArrayList<DentalService>.getWrittenServices(): ArrayList<DentalService> {
+    if (this.isNotEmpty()) this.removeAt(this.size - 1)
+
+    for (i in 0 until this.size) if (this[i].name.isBlank()) this.removeAt(i)
 
     return this
 }

@@ -14,7 +14,7 @@ data class Office(
     val voivodeship: String, // TODO: po tym filtrowanie gabinetów.
     val phoneNumbers: ArrayList<String>,
     val dentalServices: ArrayList<DentalService>,
-    var patientName: String, // Pusty oznacza brak zgłoszenia. // TODO: <- W widoku dentysty
+    var patientName: String, // Pusty oznacza brak zgłoszenia.
     var patientPhone: String,
     var patientCity: String,
     var patientETA: Long
@@ -28,6 +28,7 @@ data class Office(
             "doctorsNames" to doctorsNames,
             "availability" to availability,
             "address" to address,
+            "voivodeship" to voivodeship,
             "phoneNumbers" to phoneNumbers,
             "dentalServices" to dentalServices,
             "patientName" to patientName,
@@ -40,5 +41,21 @@ data class Office(
 
 data class DentalService(
     var name: String,
-    var price: Int
+    var price: Long
 ) : Serializable
+
+fun ArrayList<HashMap<String, Any>>.toServicesArray(): ArrayList<DentalService> {
+    val arrayList = arrayListOf<DentalService>()
+
+    for (map in this) arrayList.add(map.toDentalService())
+
+    return arrayList
+}
+
+private fun HashMap<String, Any>.toDentalService(): DentalService {
+    return try {
+        DentalService(this["name"] as String, this["price"] as Long)
+    } catch (e: Exception) {
+        DentalService("", -1L)
+    }
+}

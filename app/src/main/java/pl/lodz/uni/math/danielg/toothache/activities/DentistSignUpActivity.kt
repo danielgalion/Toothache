@@ -89,7 +89,7 @@ class DentistSignUpActivity : AppCompatActivity() {
             address = dentist_sign_up_address_edit_t_id.text.toString(),
             voivodeship = dentist_sign_up_voivodeship_tv.text.toString(),
             phoneNumbers = phones.getWrittenInputs(),
-            dentalServices = services.getWrittenInputs(),
+            dentalServices = services.getWrittenServices(),
             patientName = "",
             patientPhone = "",
             patientCity = "",

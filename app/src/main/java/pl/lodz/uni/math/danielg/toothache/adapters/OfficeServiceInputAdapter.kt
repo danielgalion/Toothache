@@ -14,7 +14,7 @@ import pl.lodz.uni.math.danielg.toothache.models.DentalService
 
 class OfficeServiceInputAdapter(
     private val context: Context?,
-    private val serviceInputs: ArrayList<DentalService>
+    val serviceInputs: ArrayList<DentalService>
 ) : RecyclerView.Adapter<CustomViewHolder>() {
 
     companion object {
@@ -48,7 +48,7 @@ class OfficeServiceInputAdapter(
 
         if (!isFlagsArrayCreated) {
             if (serviceInputs[serviceInputs.size - 1].name.isNotBlank())
-                serviceInputs.add(DentalService("", -1))
+                serviceInputs.add(DentalService("", -1L))
 
             isAlreadyAttached = Array(serviceInputs.size) { false }
             isFlagsArrayCreated = true
@@ -118,7 +118,7 @@ class OfficeServiceInputAdapter(
             TextWatcher {
 
             override fun afterTextChanged(s: Editable?) {
-                serviceInputs[position].price = s.toString().toIntOrNull() ?: -1
+                serviceInputs[position].price = s.toString().toLongOrNull() ?: -1L
             }
 
             override fun beforeTextChanged(`_`: CharSequence?, _1: Int, _2: Int, _3: Int) {
