@@ -3,6 +3,7 @@ package pl.lodz.uni.math.danielg.toothache.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -36,7 +37,10 @@ class OfficeActivity : AppCompatActivity() {
 
     private fun setupButtons() {
         office_fill_the_form_button_id.setOnClickListener {
-            startActivity(Intent(this, PatientFormActivity::class.java))
+            val intent = Intent(this, PatientFormActivity::class.java)
+            intent.putExtra(PatientFormActivity.EMAIL, office?.email)
+
+            startActivity(intent)
         }
     }
 
@@ -70,9 +74,18 @@ class OfficeActivity : AppCompatActivity() {
         office ?: return
 
         when (office?.availability) {
-            true -> office_availability_img_v_id.setImageResource(R.drawable.circle_green_medical_w_border)
-            false -> office_availability_img_v_id.setImageResource(R.drawable.circle_red_w_border)
-            null -> office_availability_img_v_id.setImageResource(R.drawable.ic_perm_phone_msg_dark_green_24dp)
+            true -> {
+                office_fill_the_form_button_id.visibility = View.VISIBLE
+                office_availability_img_v_id.setImageResource(R.drawable.circle_green_medical_w_border)
+            }
+            false -> {
+                office_fill_the_form_button_id.visibility = View.GONE
+                office_availability_img_v_id.setImageResource(R.drawable.circle_red_w_border)
+            }
+            null -> {
+                office_fill_the_form_button_id.visibility = View.GONE
+                office_availability_img_v_id.setImageResource(R.drawable.ic_perm_phone_msg_dark_green_24dp)
+            }
         }
     }
 
