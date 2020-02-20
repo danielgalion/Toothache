@@ -2,16 +2,14 @@ package pl.lodz.uni.math.danielg.toothache.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_dentist_sign_in.*
 import pl.lodz.uni.math.danielg.toothache.R
-import pl.lodz.uni.math.danielg.toothache.managers.intentToUsingTypeChoiceActivity
-import pl.lodz.uni.math.danielg.toothache.managers.onClickEyeButton
-import pl.lodz.uni.math.danielg.toothache.managers.setUpTopBar
-import pl.lodz.uni.math.danielg.toothache.managers.setupKeyboardVisibility
+import pl.lodz.uni.math.danielg.toothache.managers.*
 
 class DentistSignInActivity : AppCompatActivity() {
     companion object {
@@ -36,12 +34,10 @@ class DentistSignInActivity : AppCompatActivity() {
 
         val currentUser = auth.currentUser
 
-        if (currentUser != null) onSignIn()
-        // Check if user is signed in (non-null) and update UI accordingly.
+        if (currentUser != null) onSignedIn()
     }
 
-    private fun onSignIn() {
-//        TODO: Depend it w/ user specific info if it'd be needed.
+    private fun onSignedIn() {
         startActivity(Intent(this, DentistDashboardActivity::class.java))
     }
 
@@ -56,7 +52,6 @@ class DentistSignInActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
-
         }
     }
 
@@ -73,32 +68,18 @@ class DentistSignInActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            startActivity(Intent(this, DentistDashboardActivity::class.java))
-
-
-//            auth.signInWithEmailAndPassword(email, passwd)
-//                .addOnCompleteListener(this) { task ->
-//                    if (task.isSuccessful) {
-//                        // Sign in success, update UI with the signed-in user's information
-//                        Log.d(TAG, "signInWithEmail:success")
-//                        val user = auth.currentUser
-//
-////                        TODO: Make code cleaning.
-////                        updateUI(user)
-//                        startActivity(Intent(this, DentistDashboardActivity::class.java))
-//                    } else {
-//                        // If sign in fails, display a message to the user.
-//                        Log.w(TAG, "signInWithEmail:failure", task.exception)
-//                        Toast.makeText(
-//                            baseContext, "Authentication failed.",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-////                        updateUI(null)
-//                    }
-//
-//                    // ...
-//                }
-
+            auth.signInWithEmailAndPassword(email, passwd)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithEmail:success")
+                        startActivity(Intent(this, DentistDashboardActivity::class.java))
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithEmail:failure", task.exception)
+                        showAdequateAlert(this, "Błąd logowania. Sprawdź wpisane dane")
+                    }
+                }
         }
 
         dentist_sign_in_sign_up_button_id.setOnClickListener {
@@ -106,20 +87,5 @@ class DentistSignInActivity : AppCompatActivity() {
         }
 
         eye_button_id.setOnClickListener { onClickEyeButton(dentist_sign_in_password_input_id) }
-
-//        var ifClicked = false
-//
-//        eye_button.setOnClickListener {
-//            if (!ifClicked) {
-//                password_input.transformationMethod = null
-//                ifClicked = true
-//            } else {
-//                password_input.transformationMethod = PasswordTransformationMethod()
-//                ifClicked = false
-//            }
-//            password_input.setSelection(password_input.text.length)
-//            //            println(password_input.text.length)
-//
-//        }
     }
 }

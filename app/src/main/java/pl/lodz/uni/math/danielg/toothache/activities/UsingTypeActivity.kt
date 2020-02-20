@@ -27,7 +27,6 @@ class UsingTypeActivity : AppCompatActivity() {
         }
 
         title = "Boliząb Polska"
-        // TODO: When a dentist is already logged in intent to his dashboard. (Here or in DentistSignIn)
     }
 
     // When app is showed on the foreground again (e.g. onBackPressed after intenting for a dentist call).
