@@ -134,19 +134,16 @@ val sampleOfficeList: ArrayList<Office> = arrayListOf(
 )
 
 val sampleOffice: Office = Office(
-    name = "Something Medical",
-    email = "pawel@zab.com",
-    address = "ul. Zamorska 38 m. 3, 77-888 Ur Chaldejskie",
-    voivodeship = "łódzkie",
-    availability = true,
-    dentalServices = arrayListOf(
-        DentalService("Borowanie", 250),
-        DentalService("Wyrywanie", 300)
-    ),
-    doctorsNames = arrayListOf("Andrzej Rozumny", "Przemek Barszcz"),
-    phoneNumbers = arrayListOf("+48 788 139 685", "+48 7777"),
-    patientName = "Gerwazy Piastowski",
-    patientCity = "Zgierz",
-    patientPhone = "+48 111 222 333",
-    patientETA = 25
+    name = "",
+    email = "",
+    address = "",
+    voivodeship = "",
+    availability = null,
+    dentalServices = arrayListOf(),
+    doctorsNames = arrayListOf(),
+    phoneNumbers = arrayListOf(),
+    patientName = "",
+    patientCity = "",
+    patientPhone = "",
+    patientETA = 0
 )

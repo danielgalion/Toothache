@@ -60,7 +60,7 @@ class OfficesListAdapter(
             override fun onItemClick(view: View?) {
                 when (view?.id) {
                     view?.rec_v_office_availability_img_id?.id -> callOnThePhone(holder)
-                    else -> intentToOffice(sampleOffice)
+                    else -> intentToOffice(offices?.get(holder.adapterPosition) ?: sampleOffice)
                 }
             }
         }
