@@ -3,10 +3,14 @@ package pl.lodz.uni.math.danielg.toothache.activities
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_dentist_sign_up.*
+import kotlinx.android.synthetic.main.rec_v_office_service_input_row.view.*
+import kotlinx.android.synthetic.main.rec_v_text_input_row.view.*
 import pl.lodz.uni.math.danielg.toothache.R
 import pl.lodz.uni.math.danielg.toothache.adapters.OfficeServiceInputAdapter
 import pl.lodz.uni.math.danielg.toothache.adapters.TextInputAdapter
@@ -84,12 +88,12 @@ class DentistSignUpActivity : AppCompatActivity() {
         return Office(
             name = dentist_sign_up_name_edit_t_id.text.toString(),
             email = dentist_sign_up_email_input.text.toString(),
-            doctorsNames = doctors.getWrittenInputs(),
+            doctorsNames = getWrittenTexts((recycler_v_dentist_sign_up_dr_id.layoutManager) as LinearLayoutManager),
             availability = null,
             address = dentist_sign_up_address_edit_t_id.text.toString(),
             voivodeship = dentist_sign_up_voivodeship_tv.text.toString(),
-            phoneNumbers = phones.getWrittenInputs(),
-            dentalServices = services.getWrittenServices(),
+            phoneNumbers = getWrittenTexts((recycler_v_dentist_sign_up_phone_id.layoutManager) as LinearLayoutManager),
+            dentalServices = getWrittenServices((recycler_v_dentist_sign_up_services_id.layoutManager) as LinearLayoutManager),
             patientName = "",
             patientPhone = "",
             patientCity = "",
@@ -97,7 +101,36 @@ class DentistSignUpActivity : AppCompatActivity() {
         )
     }
 
-    // TODO: Check signing up.
+    private fun getWrittenTexts(layoutManager: LinearLayoutManager): ArrayList<String> {
+        val count = layoutManager.childCount
+        val textsAl = arrayListOf<String>()
+
+        for (i in 0 until count) {
+            val lay = layoutManager.findViewByPosition(i) as LinearLayout
+            val s = lay.rec_v_text_input_edit_t_id.text.toString()
+
+            if (s.isNotBlank()) textsAl.add(s)
+        }
+
+        return textsAl
+    }
+
+    private fun getWrittenServices(layoutManager: LinearLayoutManager): ArrayList<DentalService> {
+        val count = layoutManager.childCount
+        val servicesAl = arrayListOf<DentalService>()
+
+        for (i in 0 until count) {
+            val lay = layoutManager.findViewByPosition(i) as LinearLayout
+            val name = lay.rec_v_office_services_input_name_edit_t_id.text.toString()
+            val price =
+                lay.rec_v_office_services_input_price_edit_t_id.text.toString().toLongOrNull()
+
+            if (name.isNotBlank() && price != null) servicesAl.add(DentalService(name, price))
+        }
+
+        return servicesAl
+    }
+
     private fun signUp(
         email: String = dentist_sign_up_email_input.text.toString(),
         passwd: String = dentist_sign_up_password_input.text.toString(),
@@ -132,6 +165,8 @@ class DentistSignUpActivity : AppCompatActivity() {
                     db.collection("office").document(office.email)
                         .set(office.generateMapToSend())
                         .addOnSuccessListener { _ ->
+                            onSignedIn(this)
+
                             Log.d(TAG, "DocumentSnapshot set: $office")
                         }
                         .addOnFailureListener { e ->

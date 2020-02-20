@@ -237,8 +237,6 @@ class DentistEditFragment : Fragment() {
                 ).setBadTokenListener { Log.e(TAG, "Error showing a toast") }.show()
                 Log.w(TAG, "Error updating document", e)
             }
-
-
     }
 
     private fun getWrittenTexts(layoutManager: LinearLayoutManager): ArrayList<String> {

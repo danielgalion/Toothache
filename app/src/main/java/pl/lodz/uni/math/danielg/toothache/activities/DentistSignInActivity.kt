@@ -34,11 +34,7 @@ class DentistSignInActivity : AppCompatActivity() {
 
         val currentUser = auth.currentUser
 
-        if (currentUser != null) onSignedIn()
-    }
-
-    private fun onSignedIn() {
-        startActivity(Intent(this, DentistDashboardActivity::class.java))
+        if (currentUser != null) onSignedIn(this)
     }
 
     override fun onBackPressed() {
